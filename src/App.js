@@ -8,8 +8,9 @@ import data from './data.js'
 function App() {
   return (
     <div className="App">
-      <h1>TexChange</h1>
-      <p>react app starts here....</p>
+      <div className="bg-primary">
+        <h1>TexChange</h1>
+      </div>
       <HomePage appData={data}/>
     </div>
   );

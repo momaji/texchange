@@ -21,43 +21,7 @@ class HomePage extends React.Component{
     }
 
     sortByClicked(sortString){
-        var sortFunction;
-
-        if (sortString === "Price Lowest to Highest"){
-            sortFunction = function(bookA, bookB) { return bookA.price - bookB.price };
-        }else if (sortString === "Price Highest to Lowest"){
-            sortFunction = function(bookA, bookB) { return bookB.price - bookA.price };
-        }else if (sortString === "Textbook Name A - Z"){
-            sortFunction = function(bookA, bookB) { 
-                if (bookA.name < bookB.name) return -1;
-                if (bookB.name < bookA.name) return 1;
-                return 0; 
-            };
-        }else if (sortString === "Textbook Name Z - A"){
-            sortFunction = function(bookA, bookB) { 
-                if (bookA.name < bookB.name) return 1;
-                if (bookB.name < bookA.name) return -1;
-                return 0; 
-            };
-        }else if (sortString === "Author Name A - Z"){
-            sortFunction = function(bookA, bookB) { 
-                if (bookA.author < bookB.author) return -1;
-                if (bookB.author < bookA.author) return 1;
-                return 0; 
-            };
-        }else if (sortString === "Author Name Z - A"){
-            sortFunction = function(bookA, bookB) { 
-                if (bookA.author < bookB.author) return 1;
-                if (bookB.author < bookA.author) return -1;
-                return 0; 
-            };
-        }
-
-        var booksCopy = this.state.books;
-        booksCopy.sort(sortFunction);
-
-        this.setState( {sortBy: sortString, books: booksCopy} );
-
+        this.setState( {sortBy: sortString} );
     }
 
     togglePriceFilter(currentPriceFilter){
@@ -76,7 +40,7 @@ class HomePage extends React.Component{
         this.setState( { courseFilter: course } );
     }
 
-    //Filter books based on the state filter status
+    //Filter then sort books based on the state filter status
     static getDerivedStateFromProps(props, state){
         var filteredBooks = props.appData.textbooks;
 
@@ -107,6 +71,41 @@ class HomePage extends React.Component{
             filteredBooks = filteredBooks.filter((book) => book.location === state.locationFilter);
         }
 
+
+        var sortFunction;
+
+        if (state.sortBy === "Price Lowest to Highest"){
+            sortFunction = function(bookA, bookB) { return bookA.price - bookB.price };
+        }else if (state.sortBy === "Price Highest to Lowest"){
+            sortFunction = function(bookA, bookB) { return bookB.price - bookA.price };
+        }else if (state.sortBy === "Textbook Name A - Z"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.name < bookB.name) return -1;
+                if (bookB.name < bookA.name) return 1;
+                return 0; 
+            };
+        }else if (state.sortBy === "Textbook Name Z - A"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.name < bookB.name) return 1;
+                if (bookB.name < bookA.name) return -1;
+                return 0; 
+            };
+        }else if (state.sortBy === "Author Name A - Z"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.author < bookB.author) return -1;
+                if (bookB.author < bookA.author) return 1;
+                return 0; 
+            };
+        }else if (state.sortBy === "Author Name Z - A"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.author < bookB.author) return 1;
+                if (bookB.author < bookA.author) return -1;
+                return 0; 
+            };
+        }
+
+        filteredBooks.sort(sortFunction);
+
         return { books: filteredBooks };
     }
 
@@ -135,7 +134,7 @@ class HomePage extends React.Component{
             {locationsToRender.map(
                 (city, index) => <Form.Check type="radio" name="locationRadios" label={city} key={index} onChange={this.toggleLocationCheckbox.bind(this, city)} />
             )}
-            <Form.Check type="radio" name="locationRadios" label="All" onChange={this.toggleLocationCheckbox.bind(this, "All")} checked={this.state.locationFilter === "All"}/>
+            <Form.Check type="radio" name="locationRadios" label="All Books" onChange={this.toggleLocationCheckbox.bind(this, "All")} checked={this.state.locationFilter === "All"}/>
             </div>
         )
     }
@@ -147,7 +146,7 @@ class HomePage extends React.Component{
             {coursesToRender.map(
                 (course, index) => <Form.Check type="radio" name="courseRadios" label={course} key={index} onChange={this.toggleCourseCheckbox.bind(this, course)} />
             )}
-            <Form.Check type="radio" name="courseRadios" label="All" onChange={this.toggleCourseCheckbox.bind(this, "All")} checked={this.state.courseFilter === "All"}/>
+            <Form.Check type="radio" name="courseRadios" label="All Books" onChange={this.toggleCourseCheckbox.bind(this, "All")} checked={this.state.courseFilter === "All"}/>
             </div>
         )
     }
@@ -215,7 +214,7 @@ class HomePage extends React.Component{
                             <Form.Check type="radio" label="All" name="priceRadios" onChange={() => this.togglePriceFilter("All")} checked={this.state.priceFilter === "All"}/>
                         </Form>
                         <br />
-                        <h6><u>Location</u></h6>
+                        <h6><u>Seller Location</u></h6>
                         {this.renderLocationCheckboxes()}
                         <br />
                         <h6><u>Courses</u></h6>
