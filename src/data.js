@@ -1,6 +1,9 @@
 
 var data = {
     "locations": [ "Toronto", "Brampton", "Hamilton"],
+    "classes": [ "ENG 2MA3", "CHEM 4P03", "BIO 1B03" ],
+    "textbooks": [  { "name": "Biology - Concepts and Connections", "author": "Campbell", "published": "1990-01-01", "price": 40, "course": "BIO 1A03", "src": "/image/bio_1.jpg", "rating": "☆☆☆☆" , "location": "Hamilton"},
+                    { "name": "Biology", "author": "Brooker", "published": "2002-03-21", "price": 60, "course": "BIO 1B03", "src": "/image/bio_2.jpg", "rating": "☆☆☆", "location": "Brampton" }  ]
 
     // textbooks: [ 
     //     {name: "Biology - Concepts and Connections", author: "Campbell", published: "1990-01-01", price: 40, course: "BIO 1A03", src: "./images/bio_1.jpg"},

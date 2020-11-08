@@ -1,6 +1,6 @@
 //The JS code for the Homepage React Component
 import React from 'react';
-import { Container, Row, Col, Dropdown, Form } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Form, Image } from 'react-bootstrap';
 
 
 class HomePage extends React.Component{
@@ -11,37 +11,164 @@ class HomePage extends React.Component{
         this.state = {
             books: [],
             sortBy: "Price Lowest to Highest",
-            locations: { cities: [], checked: [] },
-            locationsChecked: [],
+            locations: { cities: [] },
+            courses: { course: [] },
             ratingFilter: "All",
-            priceFilter: "All"
+            priceFilter: "All",
+            locationFilter: "All",
+            courseFilter: "All"
         };
     }
 
     sortByClicked(sortString){
-        console.log(this.state.locations);
-        console.log(this.state.locationsChecked);
-        this.setState( {sortBy: sortString} );
+        var sortFunction;
+
+        if (sortString === "Price Lowest to Highest"){
+            sortFunction = function(bookA, bookB) { return bookA.price - bookB.price };
+        }else if (sortString === "Price Highest to Lowest"){
+            sortFunction = function(bookA, bookB) { return bookB.price - bookA.price };
+        }else if (sortString === "Textbook Name A - Z"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.name < bookB.name) return -1;
+                if (bookB.name < bookA.name) return 1;
+                return 0; 
+            };
+        }else if (sortString === "Textbook Name Z - A"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.name < bookB.name) return 1;
+                if (bookB.name < bookA.name) return -1;
+                return 0; 
+            };
+        }else if (sortString === "Author Name A - Z"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.author < bookB.author) return -1;
+                if (bookB.author < bookA.author) return 1;
+                return 0; 
+            };
+        }else if (sortString === "Author Name Z - A"){
+            sortFunction = function(bookA, bookB) { 
+                if (bookA.author < bookB.author) return 1;
+                if (bookB.author < bookA.author) return -1;
+                return 0; 
+            };
+        }
+
+        var booksCopy = this.state.books;
+        booksCopy.sort(sortFunction);
+
+        this.setState( {sortBy: sortString, books: booksCopy} );
+
     }
 
-    toggleCheckbox(city){
-        // index = this.state.locations.indexOf(city);
-        // boxes = this.state.locationsChecked;
-        // boxes[index] = !boxes[index];
-        // this.setState( { locationsChecked: boxes} );
+    togglePriceFilter(currentPriceFilter){
+        this.setState( { priceFilter: currentPriceFilter } );
+    }
+
+    toggleRatingFilter(currentRating){
+        this.setState( { ratingFilter: currentRating } );
+    }
+
+    toggleLocationCheckbox(city){
+        this.setState( {locationFilter: city} );
+    }
+
+    toggleCourseCheckbox(course){
+        this.setState( { courseFilter: course } );
+    }
+
+    //Filter books based on the state filter status
+    static getDerivedStateFromProps(props, state){
+        var filteredBooks = props.appData.textbooks;
+
+        if(state.ratingFilter !== "All"){
+            if(state.ratingFilter === "4+"){
+                filteredBooks = filteredBooks.filter((book) => book.rating.length >= 4);
+            }else if(state.ratingFilter === "3+"){
+                filteredBooks = filteredBooks.filter((book) => book.rating.length >= 3);
+            }else if(state.ratingFilter === "2+"){
+                filteredBooks = filteredBooks.filter((book) => book.rating.length >= 2);
+            }else if(state.ratingFilter === "1+"){
+                filteredBooks = filteredBooks.filter((book) => book.rating.length >= 1);
+            }
+        }
+        if(state.priceFilter !== "All"){
+            if(state.priceFilter === "Under $50"){
+                filteredBooks = filteredBooks.filter((book) => book.price < 50);
+            }else if(state.priceFilter === "$50 - $100"){
+                filteredBooks = filteredBooks.filter((book) => book.price >= 50 && book.price <= 100);
+            }else if(state.priceFilter === "Over $100"){
+                filteredBooks = filteredBooks.filter((book) => book.price > 100);
+            }
+        }
+        if(state.courseFilter !== "All"){
+            filteredBooks = filteredBooks.filter((book) => book.course === state.courseFilter);
+        }
+        if(state.locationFilter !== "All"){
+            filteredBooks = filteredBooks.filter((book) => book.location === state.locationFilter);
+        }
+
+        return { books: filteredBooks };
     }
 
     componentDidMount(){
+
+        //Dynamically set location checkboxes to info in data.js
         var locationCopy = this.state.locations;
         locationCopy.cities = this.props.appData.locations;
-        //for loop to set all checked to false
-        //setstate with locations: locationCopy
-        //this.setState( { locations: this.props.appData.locations, locationsChecked: checked } );
+        this.setState( {locations: locationCopy} );
+
+        //Dynamically set course checkboxes to info in data.js
+        var courseCopy = this.state.courses;
+        courseCopy.course = this.props.appData.classes;
+        this.setState( {courses: courseCopy} );
+
+        //Set state of textbooks from props passed
+        var textbooksCopy = this.props.appData.textbooks;
+        textbooksCopy.sort(function(bookA, bookB) { return bookA.price - bookB.price });
+        this.setState( { books: textbooksCopy } );
     }
 
     renderLocationCheckboxes(){
-        return(<div>ff</div>);
+        var locationsToRender = this.state.locations.cities;
+        return (
+            <div>
+            {locationsToRender.map(
+                (city, index) => <Form.Check type="radio" name="locationRadios" label={city} key={index} onChange={this.toggleLocationCheckbox.bind(this, city)} />
+            )}
+            <Form.Check type="radio" name="locationRadios" label="All" onChange={this.toggleLocationCheckbox.bind(this, "All")} checked={this.state.locationFilter === "All"}/>
+            </div>
+        )
     }
+
+    renderCourseCheckboxes(){
+        var coursesToRender = this.state.courses.course;
+        return (
+            <div>
+            {coursesToRender.map(
+                (course, index) => <Form.Check type="radio" name="courseRadios" label={course} key={index} onChange={this.toggleCourseCheckbox.bind(this, course)} />
+            )}
+            <Form.Check type="radio" name="courseRadios" label="All" onChange={this.toggleCourseCheckbox.bind(this, "All")} checked={this.state.courseFilter === "All"}/>
+            </div>
+        )
+    }
+
+    renderBooks(){
+        return(
+            <Row>
+                {this.state.books.map(
+                    (book) =>
+                    <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={book.name} >
+                        <p>Average Seller Review: {book.rating}</p>
+                        <Image src={window.location.origin + book.src} height={180} />
+                        <p>{book.name}</p>
+                        <p>{book.author}</p>
+                        <p>${book.price}</p>
+                    </Col>
+                )}
+            </Row>
+        );
+    }
+
 
 
     render(){
@@ -65,27 +192,37 @@ class HomePage extends React.Component{
                                 <Dropdown.Item href="#" onClick={() => this.sortByClicked("Price Highest to Lowest")}>Price Highest to Lowest</Dropdown.Item>
                                 <Dropdown.Item href="#" onClick={() => this.sortByClicked("Textbook Name A - Z")}>Textbook Name A - Z</Dropdown.Item>
                                 <Dropdown.Item href="#" onClick={() => this.sortByClicked("Textbook Name Z - A")}>Textbook Name Z - A</Dropdown.Item>
+                                <Dropdown.Item href="#" onClick={() => this.sortByClicked("Author Name A - Z")}>Author Name A - Z</Dropdown.Item>
+                                <Dropdown.Item href="#" onClick={() => this.sortByClicked("Author Name Z - A")}>Author Name Z - A</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>
                 </Row>
+                <Row><br /></Row>
                 <Row>
-                    <Col sm={2} className="text-center">
-                        <br />
-                        <h6><u>Average Review</u></h6>
-                        <a href="#" className="text-muted">☆☆☆☆ and up</a> <br />
-                        <a href="#" className="text-muted">☆☆☆ and up</a> <br />
-                        <a href="#" className="text-muted">☆☆ and up</a> <br />
-                        <a href="#" className="text-muted">☆ and up</a> <br />
+                    <Col sm={2} className="text-center ScrollingContainer">
+                        <h6><u>Average Seller Review</u></h6>
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("4+")}>☆☆☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("3+")}>☆☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("2+")}>☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("1+")}>☆ and up</a> <br />
                         <br />
                         <h6><u>Price</u></h6>
                         <Form>
-                            <Form.Check type="radio" label="Under $50" name="priceRadios"/>
-                            <Form.Check type="radio" label="$50 - $100" name="priceRadios"/>
-                            <Form.Check type="radio" label="Over $100" name="priceRadios"/>
+                            <Form.Check type="radio" label="Under $50" name="priceRadios" onChange={() => this.togglePriceFilter("Under $50")}/>
+                            <Form.Check type="radio" label="$50 - $100" name="priceRadios" onChange={() => this.togglePriceFilter("$50 - $100")}/>
+                            <Form.Check type="radio" label="Over $100" name="priceRadios" onChange={() => this.togglePriceFilter("Over $100")}/>
+                            <Form.Check type="radio" label="All" name="priceRadios" onChange={() => this.togglePriceFilter("All")} checked={this.state.priceFilter === "All"}/>
                         </Form>
                         <br />
                         <h6><u>Location</u></h6>
+                        {this.renderLocationCheckboxes()}
+                        <br />
+                        <h6><u>Courses</u></h6>
+                        {this.renderCourseCheckboxes()}
+                    </Col>
+                    <Col sm={9} className="mr-1 border border-primary ScollingContainer">
+                        {this.renderBooks()}
                         
                     </Col>
                 </Row>

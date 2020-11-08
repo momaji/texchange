@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.ScollingContainer {
+  height: 750px;
+  overflow-y: scroll;
+}
+
+.SearchBookIcon {
+  border-bottom: 2px solid grey;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
