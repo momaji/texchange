@@ -110,7 +110,6 @@ class HomePage extends React.Component{
     }
 
     componentDidMount(){
-
         //Dynamically set location checkboxes to info in data.js
         var locationCopy = this.state.locations;
         locationCopy.cities = this.props.appData.locations;
@@ -167,8 +166,6 @@ class HomePage extends React.Component{
             </Row>
         );
     }
-
-
 
     render(){
         return(
