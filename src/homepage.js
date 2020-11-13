@@ -16,7 +16,8 @@ class HomePage extends React.Component{
             ratingFilter: "All",
             priceFilter: "All",
             locationFilter: "All",
-            courseFilter: "All"
+            courseFilter: "All",
+            searchKey: "",
         };
     }
 
@@ -38,6 +39,11 @@ class HomePage extends React.Component{
 
     toggleCourseCheckbox(course){
         this.setState( { courseFilter: course } );
+    }
+
+    searchBooks(book){
+        console.log(book);
+        this.setState( {searchKey: book} );
     }
 
     //Filter then sort books based on the state filter status
@@ -106,6 +112,10 @@ class HomePage extends React.Component{
 
         filteredBooks.sort(sortFunction);
 
+        if(state.searchKey !== ""){
+            filteredBooks = filteredBooks.filter((book) => book.name.toLowerCase().includes(state.searchKey.toLowerCase()));
+        }
+
         return { books: filteredBooks };
     }
 
@@ -155,8 +165,8 @@ class HomePage extends React.Component{
         return(
             <Row>
                 {this.state.books.map(
-                    (book) =>
-                    <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={book.name} >
+                    (book, index) =>
+                    <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} >
                         <p>Average Seller Review: {book.rating}</p>
                         <Image src={window.location.origin + book.src} height={180} />
                         <p>{book.name}</p>
