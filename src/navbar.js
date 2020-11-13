@@ -59,7 +59,7 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile">Hello, Paul <BsFillPersonFill/></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile"><Button>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           <br />
