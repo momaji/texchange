@@ -5,7 +5,7 @@ import HomePage from './homepage.js';
 import YourProfile from './YourProfile.js';
 import { IoIosAddCircle } from 'react-icons/io';
 import { BsFillPersonFill } from 'react-icons/bs';
-import { Navbar, Nav, Form, Button, FormControl, Image } from 'react-bootstrap';
+import { Navbar, Nav, Form, Button, FormControl, Image, Alert } from 'react-bootstrap';
 import {
   HashRouter as Router,
   Route,
@@ -17,7 +17,7 @@ class TexNavbar extends React.Component{
     super(props);
     this.homePageRef = React.createRef();
 
-    this.state={ searchKey: "" };
+    this.state={ searchKey: "", nullRefAlert: false };
 
   }
 
@@ -33,7 +33,25 @@ class TexNavbar extends React.Component{
   }
 
   handleSearchClick(){
-    this.homePageRef.current.searchBooks(this.state.searchKey);
+    if(this.homePageRef.current !== null){
+      this.setState( {nullRefAlert: false} );
+      this.homePageRef.current.searchBooks(this.state.searchKey);
+    }else{
+      console.log("no homepage ref");
+      this.setState( {nullRefAlert: true} );
+    }
+  }
+
+  handleProfileClick(){
+    this.setState( {nullRefAlert: false} );
+  }
+
+  renderAlert(){
+    if(this.state.nullRefAlert){
+      return(
+        <Alert variant="danger">Looking for a book? Click Search again to begin!</Alert>
+      );
+    }
   }
 
 
@@ -59,9 +77,10 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile"><Button>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
+          {this.renderAlert()}
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
           <Route path="/profile" component={YourProfile}/>

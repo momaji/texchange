@@ -42,7 +42,6 @@ class HomePage extends React.Component{
     }
 
     searchBooks(book){
-        console.log(book);
         this.setState( {searchKey: book} );
     }
 
