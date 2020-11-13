@@ -43,7 +43,7 @@ class TexNavbar extends React.Component{
       <Router>
         <div>
           <Navbar collapseOnSelect sticky="top" bg="primary" variant="dark">
-            <Navbar.Brand as={NavLink} exact to="/">
+            <Navbar.Brand as={NavLink} exact to="/" href="#home">
               <Image
                 alt={""}
                 src={logo}
@@ -55,7 +55,7 @@ class TexNavbar extends React.Component{
             </Navbar.Brand>
             <Form inline>
               <FormControl type="text" placeholder="Search for Textbooks" className="mr-sm-2" onChange={this.handleSearchChange.bind(this)} />
-              <Button as={NavLink} exact to ="/" className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
+              <Button as={NavLink} exact to ="/" href="#home" className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
@@ -63,7 +63,7 @@ class TexNavbar extends React.Component{
             </Nav>
           </Navbar>
           <br />
-          <Route exact path="/" render={(props) => <HomePage {...props} appData={data} />} />
+          <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
           <Route path="/profile" component={YourProfile}/>
         </div>
       </Router>
