@@ -77,13 +77,13 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile/3"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           {this.renderAlert()}
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
-          <Route exact path="/profile/0" render={(props) => <Profile {...props} appData={data} id={0} />} />
+          <Route exact path="/profile/3" render={(props) => <Profile {...props} appData={data} id={3} />} />
         </div>
       </Router>
     )
