@@ -16,6 +16,12 @@ class TexNavbar extends React.Component{
 
   }
 
+  createListing(){
+    let info= { "name": "textbook", "author": "moziah", "published": "2002-03-21", "price": 10, "course": "BIO 1B03", "src": "/image/bio_2.jpg", "rating": "☆☆☆", "location": "Brampton" }
+    this.props.createListing(info)
+
+  }
+
   handleSearchChange(event){
     //console.log(event.target.value);
     this.setState( { searchKey: event.target.value } );
@@ -45,11 +51,10 @@ class TexNavbar extends React.Component{
           <FormControl type="text" placeholder="Search for Textbooks" className="mr-sm-2" onChange={this.handleSearchChange.bind(this)} />
           <Button className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
         </Form>
-        <Button className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
+        <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
         <Nav className="mr-sm-0">
           <Nav.Link href="#profile">Hello, Paul <BsFillPersonFill/></Nav.Link>
         </Nav>
-
       </Navbar>
       <br />
       <HomePage appData={data} ref={this.homePageRef} />
