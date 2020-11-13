@@ -16,7 +16,8 @@ class HomePage extends React.Component{
             ratingFilter: "All",
             priceFilter: "All",
             locationFilter: "All",
-            courseFilter: "All"
+            courseFilter: "All",
+            searchKey: "",
         };
     }
 
@@ -38,6 +39,11 @@ class HomePage extends React.Component{
 
     toggleCourseCheckbox(course){
         this.setState( { courseFilter: course } );
+    }
+
+    searchBooks(book){
+        console.log(book);
+        this.setState( {searchKey: book} );
     }
 
     //Filter then sort books based on the state filter status
@@ -105,6 +111,10 @@ class HomePage extends React.Component{
         }
 
         filteredBooks.sort(sortFunction);
+
+        if(state.searchKey !== ""){
+            filteredBooks = filteredBooks.filter((book) => book.name.toLowerCase().includes(state.searchKey.toLowerCase()));
+        }
 
         return { books: filteredBooks };
     }
