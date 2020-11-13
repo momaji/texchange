@@ -4,9 +4,9 @@ import './bootstrap_minty/bootstrap.min.css';
 import TexNavbar from './navbar.js';
 import SellModal from './sellbook.js';
 import data from './data.js'
-// import React from "react";
 import React, { createRef, Component } from "react";
 import ReactDOM from 'react-dom';
+
 //TexNavBar cannot be in a div otherwise sticky position will not work!!!
 class App extends React.Component{
   constructor(props){
