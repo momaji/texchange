@@ -55,7 +55,7 @@ class TexNavbar extends React.Component{
             </Navbar.Brand>
             <Form inline>
               <FormControl type="text" placeholder="Search for Textbooks" className="mr-sm-2" onChange={this.handleSearchChange.bind(this)} />
-              <Button className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
+              <Button as={NavLink} exact to ="/" className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
