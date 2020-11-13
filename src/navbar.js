@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './texchange_logo.png';
 import data from './data.js'
 import HomePage from './homepage.js';
-import YourProfile from './YourProfile.js';
+import Profile from './profile.js';
 import { IoIosAddCircle } from 'react-icons/io';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { Navbar, Nav, Form, Button, FormControl, Image, Alert } from 'react-bootstrap';
@@ -77,13 +77,13 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           {this.renderAlert()}
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
-          <Route path="/profile" component={YourProfile}/>
+          <Route exact path="/profile/0" render={(props) => <Profile {...props} appData={data} id={0} />} />
         </div>
       </Router>
     )

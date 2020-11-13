@@ -14,7 +14,13 @@ var data = {
                     { "name": "Geometry", "author": "Holt", "published": "2005-09-26", "price": 70, "course": "MATH 1XB3", "src": "/image/math_2.jpg", "rating": "☆", "location": "Hamilton" },
                     { "name": "Elementary Calculus", "author": "H. Jerome Keisler", "published": "2015-04-30", "price": 85, "course": "MATH 2C03", "src": "/image/math_3.jpg", "rating": "☆☆☆☆", "location": "Hamilton" },
                     { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto" }
-                ]
+                ],
+    "firstNames": ["Janet", "King", "Ray-William", "Anthony", "Drew"],
+    "lastNames": ["Kim", "Bach", "Johnson", "Fantano", "Gooden"],
+    "emails": ["janetkim@gmail.com", "bachk.5p00n@hotmail.com", "yfm2011@yahoo.com", "anthonyf@gmail.com", "drewisgooden@outlook.com"],
+    "numbers": ["647-123-4567", "416-821-5211", "905-800-5009", "647-929-3264", "416-666-4205"],
+    "profileLocations": ["Toronto, ON", "Toronto, ON", "Hamilton, ON", "Hamilton, ON", "Brampton, ON"],
+    "avatars": ["/image/janet.jpg", "/image/bach.jpg", "/image/ray.jpg", "/image/fantano.jpg", "/image/gooden.jpg"]
 }
 
 export default data;
