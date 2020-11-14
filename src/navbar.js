@@ -93,7 +93,7 @@ class TexNavbar extends React.Component{
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
-          <Route path="/profile/:id" render={(props) => <Profile {...props} data={this.props.appData} />} />
+          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} />} />
           <Route path="/books/:id" render={(props) => <Listing {...props} data={this.props.appData} />}></Route>
         </div>
       </Router>
