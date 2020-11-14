@@ -28,12 +28,11 @@ class Listing extends React.Component {
 
     findInData(name, id) {
         var source = this.props.data[name];
-        var result = source.filter(element => (element['id'] == id));
-        return result;
+        return source.filter(element => (element['id'] == id))[0];
     }
 
     componentDidMount() {
-        var textbookData = this.findInData("textbooks",this.props.match.params.id)[0];
+        var textbookData = this.findInData("textbooks",this.props.match.params.id);
         console.log(textbookData)
         this.setState
             ({
