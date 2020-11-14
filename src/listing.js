@@ -65,13 +65,14 @@ class Listing extends React.Component {
         return (
             <Container align="center">
                 <Jumbotron>
-                    <h1>{this.state.name}, {this.state.author}</h1>
+                    <h1>{this.state.name}</h1>
                     <Link to={this.getSearchUrl()}>View all listings for this book</Link>
                 </Jumbotron>
                 <Row className="mb-3">
                     <Col className="mb-3">
                         <Image src={window.location.origin + this.state.src} />
-                            <p>Course: {this.state.course}, Published Date: {this.state.published}</p>
+                        <h3 className="mt-1">By: {this.state.author}</h3>
+                        <p>Course: {this.state.course}, Published Date: {this.state.published}</p>
                     </Col>
                     <Col>
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
