@@ -1,7 +1,12 @@
 //The JS code for the Profile React Component
 import React from 'react';
-import { Container, Row, Col, Dropdown, Jumbotron, Image } from 'react-bootstrap';
-
+import { Container, Row, Col, Button, Jumbotron, Image } from 'react-bootstrap';
+import {
+    HashRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
+import { BsFillPersonFill } from 'react-icons/bs';
 
 class Listing extends React.Component {
 
@@ -16,7 +21,8 @@ class Listing extends React.Component {
             course: "",
             src: "",
             rating: "",
-            location: ""
+            location: "",
+            personId: ""
         };
     }
 
@@ -31,10 +37,14 @@ class Listing extends React.Component {
                 course: this.props.data["course"],
                 src: this.props.data["src"],
                 rating: this.props.data["rating"],
-                location: this.props.data["location"]
+                location: this.props.data["location"],
+                personId: this.props.data["personId"]
             });
     }
 
+    getProfileLink() {
+        return "/profile/" + this.state.personId;
+    }
     render() {
         return (
             <Container>
@@ -52,10 +62,10 @@ class Listing extends React.Component {
                         <h4>Seller</h4>
                         <Row>
                             <Col>
-                            <p></p>
+                                <Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link>
                             </Col>
                             <Col>
-                        <p>Review Score: {this.state.rating}</p>
+                                <p>Review Score: {this.state.rating}</p>
                             </Col>
                         </Row>
                         <p>Sellers Notes</p>
