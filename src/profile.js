@@ -1,6 +1,6 @@
 //The JS code for the Profile React Component
 import React from 'react';
-import { Container, Row, Col, Dropdown, Form, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 
 
 class Profile extends React.Component{
@@ -60,11 +60,21 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={1}>
                     </Col>
-                </Row>
+                </Row><br></br>
                 <Row>
                     <Col sm={1}>
                     </Col>
                     <Col>
+                        <h2 className="float-left">{this.state.firstName}'s Textbooks For Sale</h2>
+                    </Col>
+                    <Col sm={1}>
+                    </Col>
+                </Row><br></br>
+                <Row>
+                    <Col sm={1}>
+                    </Col>
+                    <Col>
+                        <h2 className="float-left">{this.state.firstName}'s Favourited Listings</h2>
                     </Col>
                     <Col sm={1}>
                     </Col>

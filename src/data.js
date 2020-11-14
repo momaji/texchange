@@ -17,7 +17,7 @@ var data = {
                 ],
     "firstNames": ["Janet", "King", "Ray-William", "Anthony", "Drew"],
     "lastNames": ["Kim", "Bach", "Johnson", "Fantano", "Gooden"],
-    "emails": ["janetkim@gmail.com", "bachk.5p00n@hotmail.com", "yfm2011@yahoo.com", "anthonyf@gmail.com", "drewisgooden@outlook.com"],
+    "emails": ["janetkim@gmail.com", "bachk.5p00n@hotmail.com", "yfm2011@yahoo.com", "theneedledrop@gmail.com", "drewisgooden@outlook.com"],
     "numbers": ["647-123-4567", "416-821-5211", "905-800-5009", "647-929-3264", "416-666-4205"],
     "profileLocations": ["Toronto, ON", "Toronto, ON", "Hamilton, ON", "Hamilton, ON", "Brampton, ON"],
     "avatars": ["/image/janet.jpg", "/image/bach.jpg", "/image/ray.jpg", "/image/fantano.jpg", "/image/gooden.jpg"]
