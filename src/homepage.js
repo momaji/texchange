@@ -26,7 +26,12 @@ class HomePage extends React.Component {
             locationFilter: "All",
             courseFilter: "All",
             searchKey: "",
+            exactSearchKey: ""
         };
+
+        if(props.search !== undefined){
+            this.state.exactSearchKey = props.search;
+        }
     }
 
     sortByClicked(sortString) {
@@ -50,7 +55,7 @@ class HomePage extends React.Component {
     }
 
     searchBooks(book) {
-        this.setState({ searchKey: book });
+        this.setState({ searchKey: book }); //I think we should make this append something to the URL, so people can share searches
     }
 
     //Filter then sort books based on the state filter status
@@ -123,6 +128,11 @@ class HomePage extends React.Component {
             filteredBooks = filteredBooks.filter((book) => book.name.toLowerCase().includes(state.searchKey.toLowerCase()));
         }
 
+        //lets hope this works well
+        if (state.exactSearchKey !== "") {
+            filteredBooks = filteredBooks.filter((book) => book.name.toLowerCase() == (state.exactSearchKey.toLowerCase()));
+        }
+
         return { books: filteredBooks };
     }
 
@@ -144,7 +154,7 @@ class HomePage extends React.Component {
         this.setState({ books: textbooksCopy });
     }
 
-    getBookId(book) {
+    getBookUrl(book) {
         return "/books/" + book["id"];
     }
 
@@ -181,7 +191,7 @@ class HomePage extends React.Component {
                             <p>Average Seller Review: {book.rating}</p>
                             <Image src={window.location.origin + book.src} height={180} />
                             <p></p>
-                            <Link exact to={this.getBookId(book)}>View Listing</Link>
+                            <Link exact to={this.getBookUrl(book)}>View Listing</Link>
                             <p>{book.name}</p>
                             <p>{book.author}</p>
                             <p>${book.price}</p>

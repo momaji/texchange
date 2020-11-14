@@ -27,9 +27,10 @@ class Listing extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.setState
             ({
-                id: this.props.data.id["id"],
+                id: this.props.data["id"],
                 name: this.props.data["name"],
                 author: this.props.data["author"],
                 published: this.props.data["published"],
@@ -45,11 +46,16 @@ class Listing extends React.Component {
     getProfileLink() {
         return "/profile/" + this.state.personId;
     }
+
+    getSearchUrl(){
+        return "/search/"  + this.state.id;
+    }
     render() {
         return (
             <Container>
                 <Jumbotron>
                     <h1>{this.state.name}</h1>
+                    <Link to={this.getSearchUrl()}>View all listings for this book</Link>
                 </Jumbotron>
                 <Row>
                     <Col>
@@ -69,7 +75,7 @@ class Listing extends React.Component {
                             </Col>
                         </Row>
                         <p>Sellers Notes</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida. Maecenas ut pharetra mauris, eu volutpat ex. Ut faucibus mi in dolor rutrum, non bibendum lectus bibendum. Vestibulum mattis vestibulum suscipit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
                         <p>Location: {this.state.location}</p>
                         <p>Price: ${this.state.price}</p>
                     </Col>

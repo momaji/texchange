@@ -57,6 +57,14 @@ class TexNavbar extends React.Component{
 
 
 
+  findInData(name, id){
+    var source = data[name];
+    var result;
+    source.forEach(element => (element['id'] === id ? result = element : null));
+    return result;
+  }
+
+
   render(){
     return(
       <Router>
@@ -84,23 +92,35 @@ class TexNavbar extends React.Component{
           {this.renderAlert()}
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
+          <Route path="/search/0" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Biology - Concepts and Connections"}/>} />
+          <Route path="/search/1" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Biology"}/>} />
+          <Route path="/search/2" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Human Biology"}/>} />
+          <Route path="/search/3" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Exploring Biology in the Labratory"}/>} />
+          <Route path="/search/4" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Organic Chemistry"}/>} />
+          <Route path="/search/5" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Conceptual Chemistry"}/>} />
+          <Route path="/search/6" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Physical Chemistry of Polymers"}/>} />
+          <Route path="/search/7" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Organic Chemistry 2"}/>} />
+          <Route path="/search/8" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Mathematics"}/>} />
+          <Route path="/search/9" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Geometry"}/>} />
+          <Route path="/search/10" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Elementary Calculus"}/>} />
+          <Route path="/search/11" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Essential Mathematics for Engineers"}/>} />
           <Route exact path="/profile/0" render={(props) => <Profile {...props} appData={data} id={0} />} />
           <Route exact path="/profile/1" render={(props) => <Profile {...props} appData={data} id={1} />} />
           <Route exact path="/profile/2" render={(props) => <Profile {...props} appData={data} id={2} />} />
           <Route exact path="/profile/3" render={(props) => <Profile {...props} appData={data} id={3} />} />
           <Route exact path="/profile/4" render={(props) => <Profile {...props} appData={data} id={4} />} />
-          <Route path="/books/0" render={(props) => <Listing {...props} data={{ "name": "Biology - Concepts and Connections", "author": "Campbell", "published": "1990-01-01", "price": 40, "course": "BIO 1A03", "src": "/image/bio_1.jpg", "rating": "☆☆☆☆" , "location": "Hamilton", "id": 0, "personId": 0}} />}></Route>
-          <Route path="/books/1" render={(props) => <Listing {...props} data={{ "name": "Biology", "author": "Brooker", "published": "2002-03-21", "price": 60, "course": "BIO 1B03", "src": "/image/bio_2.jpg", "rating": "☆☆☆", "location": "Brampton", "id": 1, "personId": 1 }}/>}></Route>
-          <Route path="/books/2" render={(props) => <Listing {...props} data={{ "name": "Human Biology", "author": "Michael D. Johnson", "published": "2008-03-21", "price": 90, "course": "BIO 3HB3", "src": "/image/bio_3.jpg", "rating": "☆☆", "location": "Toronto", "id": 2, "personId": 2 }} />}></Route>
-          <Route path="/books/3" render={(props) => <Listing {...props} data={{ "name": "Exploring Biology in the Labratory", "author": "John L. Crawley", "published": "2018-06-14", "price": 110, "course": "BIO 2LA3", "src": "/image/bio_4.jpg", "rating": "☆☆☆☆☆", "location": "Brampton", "id": 3, "personId": 3 }} />}></Route>
-          <Route path="/books/4" render={(props) => <Listing {...props} data={{ "name": "Organic Chemistry", "author": "Michael B. Smith", "published": "2000-11-04", "price": 40, "course": "CHEM 2OC3", "src": "/image/chemistry_1.jpg", "rating": "☆", "location": "Hamilton", "id": 4, "personId": 4 }} />}></Route>
-          <Route path="/books/5" render={(props) => <Listing {...props} data={{ "name": "Conceptual Chemistry", "author": "John Suchocki", "published": "2008-03-21", "price": 60, "course": "CHEM 3CC3", "src": "/image/chemistry_2.jpg", "rating": "☆☆☆", "location": "Hamilton", "id": 5, "personId": 5 }} />}></Route>
-          <Route path="/books/6" render={(props) => <Listing {...props} data={{ "name": "Physical Chemistry of Polymers", "author": "Sebastian Seiffert", "published": "2013-02-19", "price": 95, "course": "CHEM 4P03", "src": "/image/chemistry_3.jpg", "rating": "☆☆☆☆", "location": "Brampton", "id": 6, "personId": 0 }} />}></Route>
-          <Route path="/books/7" render={(props) => <Listing {...props} data={{ "name": "Organic Chemistry 2", "author": "Francis A. Carey", "published": "2017-08-20", "price": 115, "course": "CHEM 2CO3", "src": "/image/chemistry_4.jpg", "rating": "☆☆☆☆☆", "location": "Toronto", "id": 7, "personId": 1 }} />}></Route>
-          <Route path="/books/8" render={(props) => <Listing {...props} data={{ "name": "Mathematics", "author": "Holt", "published": "2002-12-05", "price": 45, "course": "MATH 1XA3", "src": "/image/math_1.jpg", "rating": "☆☆☆", "location": "Hamilton", "id": 8, "personId": 2 }} />}></Route>
-          <Route path="/books/9" render={(props) => <Listing {...props} data={{ "name": "Geometry", "author": "Holt", "published": "2005-09-26", "price": 70, "course": "MATH 1XB3", "src": "/image/math_2.jpg", "rating": "☆", "location": "Hamilton", "id": 9, "personId": 3 }} />}></Route>
-          <Route path="/books/10" render={(props) => <Listing {...props} data={{ "name": "Elementary Calculus", "author": "H. Jerome Keisler", "published": "2015-04-30", "price": 85, "course": "MATH 2C03", "src": "/image/math_3.jpg", "rating": "☆☆☆☆", "location": "Hamilton", "id": 10, "personId": 4 }} />}></Route>
-          <Route path="/books/11" render={(props) => <Listing {...props} data={{ "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto", "id": 11, "personId": 5 }} />}></Route>
+          <Route path="/books/0" render={(props) => <Listing {...props} data={this.findInData("textbooks", 0)} />}></Route>
+          <Route path="/books/1" render={(props) => <Listing {...props} data={this.findInData("textbooks", 1)}/>}></Route>
+          <Route path="/books/2" render={(props) => <Listing {...props} data={this.findInData("textbooks", 2)} />}></Route>
+          <Route path="/books/3" render={(props) => <Listing {...props} data={this.findInData("textbooks", 3)} />}></Route>
+          <Route path="/books/4" render={(props) => <Listing {...props} data={this.findInData("textbooks", 4)} />}></Route>
+          <Route path="/books/5" render={(props) => <Listing {...props} data={this.findInData("textbooks", 5)} />}></Route>
+          <Route path="/books/6" render={(props) => <Listing {...props} data={this.findInData("textbooks", 6)}/>}></Route>
+          <Route path="/books/7" render={(props) => <Listing {...props} data={this.findInData("textbooks", 7)}/>}></Route>
+          <Route path="/books/8" render={(props) => <Listing {...props} data={this.findInData("textbooks", 8)}/>}></Route>
+          <Route path="/books/9" render={(props) => <Listing {...props} data={this.findInData("textbooks", 9)}/>}></Route>
+          <Route path="/books/10" render={(props) => <Listing {...props} data={this.findInData("textbooks", 10)}/>}></Route>
+          <Route path="/books/11" render={(props) => <Listing {...props} data={this.findInData("textbooks", 11)}/>}></Route>
         </div>
       </Router>
     )
