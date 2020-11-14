@@ -27,7 +27,7 @@ class Listing extends React.Component {
     }
 
     findInData(name, id) {
-        var source = this.props.data[name];
+        var source = this.props.appData[name];
         return source.filter(element => (element['id'] == id))[0];
     }
 
