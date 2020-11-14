@@ -13,7 +13,7 @@ var data = {
                     { "name": "Mathematics", "author": "Holt", "published": "2002-12-05", "price": 45, "course": "MATH 1XA3", "src": "/image/math_1.jpg", "rating": "☆☆☆", "location": "Hamilton", "id": 8, "personId": 3 },
                     { "name": "Geometry", "author": "Holt", "published": "2005-09-26", "price": 70, "course": "MATH 1XB3", "src": "/image/math_2.jpg", "rating": "☆", "location": "Hamilton", "id": 9, "personId": 4 },
                     { "name": "Elementary Calculus", "author": "H. Jerome Keisler", "published": "2015-04-30", "price": 85, "course": "MATH 2C03", "src": "/image/math_3.jpg", "rating": "☆☆☆☆", "location": "Hamilton", "id": 10, "personId": 0 },
-                    { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto", "id": 1 }
+                    { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto", "id": 11, "personId": 1 }
                 ],
     "firstNames": ["Janet", "King", "Ray-William", "Anthony", "Drew"],
     "lastNames": ["Kim", "Bach", "Johnson", "Fantano", "Gooden"],
