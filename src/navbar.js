@@ -109,18 +109,7 @@ class TexNavbar extends React.Component{
           <Route exact path="/profile/2" render={(props) => <Profile {...props} data={this.findInData("people", 2)} />} />
           <Route exact path="/profile/3" render={(props) => <Profile {...props} data={this.findInData("people", 3)} />} />
           <Route exact path="/profile/4" render={(props) => <Profile {...props} data={this.findInData("people", 4)} />} />
-          <Route path="/books/0" render={(props) => <Listing {...props} data={this.findInData("textbooks", 0)} />}></Route>
-          <Route path="/books/1" render={(props) => <Listing {...props} data={this.findInData("textbooks", 1)}/>}></Route>
-          <Route path="/books/2" render={(props) => <Listing {...props} data={this.findInData("textbooks", 2)} />}></Route>
-          <Route path="/books/3" render={(props) => <Listing {...props} data={this.findInData("textbooks", 3)} />}></Route>
-          <Route path="/books/4" render={(props) => <Listing {...props} data={this.findInData("textbooks", 4)} />}></Route>
-          <Route path="/books/5" render={(props) => <Listing {...props} data={this.findInData("textbooks", 5)} />}></Route>
-          <Route path="/books/6" render={(props) => <Listing {...props} data={this.findInData("textbooks", 6)}/>}></Route>
-          <Route path="/books/7" render={(props) => <Listing {...props} data={this.findInData("textbooks", 7)}/>}></Route>
-          <Route path="/books/8" render={(props) => <Listing {...props} data={this.findInData("textbooks", 8)}/>}></Route>
-          <Route path="/books/9" render={(props) => <Listing {...props} data={this.findInData("textbooks", 9)}/>}></Route>
-          <Route path="/books/10" render={(props) => <Listing {...props} data={this.findInData("textbooks", 10)}/>}></Route>
-          <Route path="/books/11" render={(props) => <Listing {...props} data={this.findInData("textbooks", 11)}/>}></Route>
+          <Route path="/books/:id" render={(props) => <Listing {...props} data={this.props.appData} />}></Route>
         </div>
       </Router>
     )

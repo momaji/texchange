@@ -12,8 +12,9 @@ class Listing extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(this.props.data)
         this.state = {
-            id: "",
+            id: this.props.match.params.id,
             name: "",
             author: "",
             published: "",
@@ -27,19 +28,19 @@ class Listing extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        console.log(this.props.data["textbooks"][this.state.id]["name"])
         this.setState
             ({
-                id: this.props.data["id"],
-                name: this.props.data["name"],
-                author: this.props.data["author"],
-                published: this.props.data["published"],
-                price: this.props.data["price"],
-                course: this.props.data["course"],
-                src: this.props.data["src"],
-                rating: this.props.data["rating"],
-                location: this.props.data["location"],
-                personId: this.props.data["personId"]
+                id: this.props.match.params.id,
+                name: this.props.data["textbooks"][this.state.id]["name"],
+                author: this.props.data["textbooks"][this.state.id]["author"],
+                published: this.props.data["textbooks"][this.state.id]["published"],
+                price: this.props.data["textbooks"][this.state.id]["price"],
+                course: this.props.data["textbooks"][this.state.id]["course"],
+                src: this.props.data["textbooks"][this.state.id]["src"],
+                rating: this.props.data["textbooks"][this.state.id]["rating"],
+                location: this.props.data["textbooks"][this.state.id]["location"],
+                personId: this.props.data["textbooks"][this.state.id]["personId"]
             });
     }
 
@@ -65,19 +66,21 @@ class Listing extends React.Component {
                         <p>Published Date: {this.state.published}</p>
                     </Col>
                     <Col>
-                        <h4>Seller</h4>
+                        <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
                         <Row>
                             <Col>
-                                <Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link>
+                                <p>Review Score: {this.state.rating}</p> 
                             </Col>
                             <Col>
-                                <p>Review Score: {this.state.rating}</p>
+                                <p>Location: {this.state.location}</p>
                             </Col>
                         </Row>
-                        <p>Sellers Notes</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
-                        <p>Location: {this.state.location}</p>
-                        <p>Price: ${this.state.price}</p>
+                        <Row>
+                            <Col>
+                        <h3>Price: ${this.state.price}</h3>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
