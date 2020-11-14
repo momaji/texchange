@@ -173,7 +173,6 @@ class HomePage extends React.Component {
 
     renderBooks() {
         return (
-            <Router>
             <Row>
                 {this.state.books.map(
                     (book, index) =>
@@ -188,7 +187,6 @@ class HomePage extends React.Component {
                         </Col>
                 )}
             </Row>
-            </Router>
         );
     }
 
@@ -196,6 +194,7 @@ class HomePage extends React.Component {
 
     render() {
         return (
+            <Router>
             <Container fluid="true">
                 <Row>
                     <Col sm={2}>
@@ -249,6 +248,7 @@ class HomePage extends React.Component {
                     </Col>
                 </Row>
             </Container>
+            </Router>
         );
     }
 }
