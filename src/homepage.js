@@ -30,8 +30,14 @@ class HomePage extends React.Component {
         };
 
         if(props.search){
-            this.state.exactSearchKey = this.props.appData["textbooks"][this.props.match.params.id]["name"]; //search for this name exactly
+            var textbookData = this.findInData("textbooks",this.props.match.params.id);
+            this.state.exactSearchKey = textbookData["name"]; //search for this name exactly
         }
+    }
+
+    findInData(name, id) {
+        var source = this.props.appData[name];
+        return source.filter(element => (element['id'] == id))[0];
     }
 
     sortByClicked(sortString) {
