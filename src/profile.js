@@ -1,6 +1,7 @@
 //The JS code for the Profile React Component
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
+import ItemsCarousel from 'react-items-carousel';
 
 
 class Profile extends React.Component{
@@ -22,26 +23,32 @@ class Profile extends React.Component{
         };
     }
 
+    findInData(name, id) 
+    {
+        var source = this.props.appData[name];
+        return source.filter(element => (element['id'] == id))[0];
+    }
+
     componentDidMount()
     {
-        console.log(this.props.data["people"])
+        var profileData = this.findInData("people", this.props.match.params.id);
         this.setState
         ({     
-            profileID: this.props.data["people"][this.state.profileID]["id"],     
-            firstName: this.props.data["people"][this.state.profileID]["firstName"],
-            lastName: this.props.data["people"][this.state.profileID]["lastName"],
-            email: this.props.data["people"][this.state.profileID]["email"],
-            number: this.props.data["people"][this.state.profileID]["phone"],
-            location: this.props.data["people"][this.state.profileID]["location"],
-            image: this.props.data["people"][this.state.profileID]["avatar"],
-            rating: this.props.data["people"][this.state.profileID]["rating"],
-            books: this.props.data["people"][this.state.profileID]["books"],
-            favourited: this.props.data["people"][this.state.profileID]["favourited"]
+            profileID: this.props.match.params.id,   
+            firstName: profileData["firstName"],
+            lastName: profileData["lastName"],
+            email: profileData["email"],
+            number: profileData["phone"],
+            location: profileData["location"],
+            image: profileData["avatar"],
+            rating: profileData["rating"],
+            books: profileData["books"],
+            favourited: profileData["favourited"]
         });
     }   
 
     render()
-    {
+    {   
         return (
             <Container fluid="true">
                 <Row>
@@ -83,7 +90,6 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h2 className="float-left">{this.state.firstName}'s Favourited Listings</h2>
                     </Col>
                     <Col sm={1}>
                     </Col>
