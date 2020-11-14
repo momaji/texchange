@@ -33,7 +33,6 @@ class Listing extends React.Component {
 
     componentDidMount() {
         var textbookData = this.findInData("textbooks",this.props.match.params.id);
-        console.log(textbookData)
         this.setState
             ({
                 id: this.props.match.params.id,
@@ -56,6 +55,12 @@ class Listing extends React.Component {
     getSearchUrl() {
         return "/search/" + this.state.id;
     }
+
+    getMailToLink(){
+        var person = this.findInData("people", this.state.personId);
+        return "mailto:" + person["email"];
+    }
+
     render() {
         return (
             <Container>
@@ -64,11 +69,11 @@ class Listing extends React.Component {
                     <Link to={this.getSearchUrl()}>View all listings for this book</Link>
                 </Jumbotron>
                 <Row>
-                    <Col>
+                    <Col sm={4}>
                         <Image src={window.location.origin + this.state.src} height={360} />
-                        <p>Author: {this.state.author}</p>
-                        <p>Course: {this.state.course}</p>
-                        <p>Published Date: {this.state.published}</p>
+                    <Row>
+                        <p>Author: {this.state.author}, Course: {this.state.course}, Published Date: {this.state.published}</p>
+                        </Row> 
                     </Col>
                     <Col>
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
@@ -84,6 +89,7 @@ class Listing extends React.Component {
                         <Row>
                             <Col>
                                 <h3>Price: ${this.state.price}</h3>
+                                <a href={this.getMailToLink()}>Contact Seller for Purchase</a>
                             </Col>
                         </Row>
                     </Col>
