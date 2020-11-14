@@ -13,21 +13,15 @@ var data = {
                     { "name": "Mathematics", "author": "Holt", "published": "2002-12-05", "price": 45, "course": "MATH 1XA3", "src": "/image/math_1.jpg", "rating": "☆☆☆", "location": "Hamilton", "id": 8, "personId": 3 },
                     { "name": "Geometry", "author": "Holt", "published": "2005-09-26", "price": 70, "course": "MATH 1XB3", "src": "/image/math_2.jpg", "rating": "☆", "location": "Hamilton", "id": 9, "personId": 4 },
                     { "name": "Elementary Calculus", "author": "H. Jerome Keisler", "published": "2015-04-30", "price": 85, "course": "MATH 2C03", "src": "/image/math_3.jpg", "rating": "☆☆☆☆", "location": "Hamilton", "id": 10, "personId": 0 },
-                    { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto", "id": 11, "personId": 1 }
+                    { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 120, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆", "location": "Toronto", "id": 11, "personId": 1 },
+                    { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 100, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "☆☆☆", "location": "Hamilton", "id": 12, "personId": 2 }
                 ],
-    "firstNames": ["Janet", "King", "Ray-William", "Anthony", "Drew"],
-    "lastNames": ["Kim", "Bach", "Johnson", "Fantano", "Gooden"],
-    "emails": ["janetkim@gmail.com", "bachk.5p00n@hotmail.com", "yfm2011@yahoo.com", "theneedledrop@gmail.com", "drewisgooden@outlook.com"],
-    "numbers": ["647-123-4567", "416-821-5211", "905-800-5009", "647-929-3264", "416-666-4205"],
-    "profileLocations": ["Toronto, ON", "Toronto, ON", "Hamilton, ON", "Hamilton, ON", "Brampton, ON"],
-    "avatars": ["/image/janet.jpg", "/image/bach.jpg", "/image/ray.jpg", "/image/fantano.jpg", "/image/gooden.jpg"],
-    //This is how the people should be structured
     "people":[
-        {"id":0, "firstName": "Janet", "lastName": "Kim", "email": "janetkim@gmail.com", "phone":"647-123-4567", "location": "Toronto, ON", "avatar":"/image/janet.jpg"},
-        {"id":1, "firstName": "King", "lastName": "Bach", "email": "bachk.5p00n@hotmail.com", "phone":"416-821-5211", "location": "Toronto, ON", "avatar":"/image/bach.jpg"},
-        {"id":2, "firstName": "Ray-William", "lastName": "Johnson", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg"},
-        {"id":3, "firstName": "Anthony", "lastName": "Fantano", "email": "anthonyf@gmail.com", "phone":"647-929-3264", "location": "Hamilton, ON", "avatar":"/image/fantano.jpg"},
-        {"id":4, "firstName": "Drew", "lastName": "Gooden", "email": "drewisgooden@outlook.com", "phone":"416-666-4205", "location": "Brampton, ON", "avatar":"/image/gooden.jpg"}
+        {"id":0, "firstName": "Janet", "lastName": "Kim", "email": "janetkim@gmail.com", "phone":"647-123-4567", "location": "Toronto, ON", "avatar":"/image/janet.jpg", "books": [0, 5, 10], "favourited": [3, 8]},
+        {"id":1, "firstName": "Anthony", "lastName": "Fantano", "email": "anthonyf@gmail.com", "phone":"647-929-3264", "location": "Hamilton, ON", "avatar":"/image/fantano.jpg", "books": [1, 6, 11], "favourited": [2, 8, 7]},
+        {"id":2, "firstName": "Ray-William", "lastName": "Johnson", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg", "books": [2, 7, 12], "favourited": [0, 1, 11, 12]},
+        {"id":3, "firstName": "King", "lastName": "Bach", "email": "bachk.5p00n@hotmail.com", "phone":"416-821-5211", "location": "Toronto, ON", "avatar":"/image/bach.jpg","books": [3, 8], "favourited": [4, 6, 7, 9, 10]},
+        {"id":4, "firstName": "Drew", "lastName": "Gooden", "email": "drewisgooden@outlook.com", "phone":"416-666-4205", "location": "Brampton, ON", "avatar":"/image/gooden.jpg", "books": [4, 9], "favourited": [0, 1, 2, 3, 5, 6]}
     ]
 }
 
