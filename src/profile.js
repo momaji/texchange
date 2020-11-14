@@ -9,7 +9,7 @@ class Profile extends React.Component{
     {
         super(props);
         this.state = {
-            profileID: "",
+            profileID: this.props.match.params.id,
             firstName: "",
             lastName: "",
             email: "",
@@ -24,18 +24,19 @@ class Profile extends React.Component{
 
     componentDidMount()
     {
+        console.log(this.props.data["people"])
         this.setState
         ({     
-            profileID: this.props.data["id"],     
-            firstName: this.props.data["firstName"],
-            lastName: this.props.data["lastName"],
-            email: this.props.data["email"],
-            number: this.props.data["phone"],
-            location: this.props.data["location"],
-            image: this.props.data["avatar"],
-            rating: this.props.data["rating"],
-            books: this.props.data["books"],
-            favourited: this.props.data["favourited"]
+            profileID: this.props.data["people"][this.state.profileID]["id"],     
+            firstName: this.props.data["people"][this.state.profileID]["firstName"],
+            lastName: this.props.data["people"][this.state.profileID]["lastName"],
+            email: this.props.data["people"][this.state.profileID]["email"],
+            number: this.props.data["people"][this.state.profileID]["phone"],
+            location: this.props.data["people"][this.state.profileID]["location"],
+            image: this.props.data["people"][this.state.profileID]["avatar"],
+            rating: this.props.data["people"][this.state.profileID]["rating"],
+            books: this.props.data["people"][this.state.profileID]["books"],
+            favourited: this.props.data["people"][this.state.profileID]["favourited"]
         });
     }   
 

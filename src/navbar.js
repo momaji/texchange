@@ -91,13 +91,9 @@ class TexNavbar extends React.Component{
           </Navbar>
           {this.renderAlert()}
           <br />
-          <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
+          <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
-          <Route exact path="/profile/0" render={(props) => <Profile {...props} data={this.findInData("people", 0)} />} />
-          <Route exact path="/profile/1" render={(props) => <Profile {...props} data={this.findInData("people", 1)} />} />
-          <Route exact path="/profile/2" render={(props) => <Profile {...props} data={this.findInData("people", 2)} />} />
-          <Route exact path="/profile/3" render={(props) => <Profile {...props} data={this.findInData("people", 3)} />} />
-          <Route exact path="/profile/4" render={(props) => <Profile {...props} data={this.findInData("people", 4)} />} />
+          <Route exact path="/profile/:id" render={(props) => <Profile {...props} data={this.props.appData} />} />
           <Route path="/books/:id" render={(props) => <Listing {...props} data={this.props.appData} />}></Route>
         </div>
       </Router>
