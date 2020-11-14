@@ -92,18 +92,7 @@ class TexNavbar extends React.Component{
           {this.renderAlert()}
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} />} />
-          <Route path="/search/0" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Biology - Concepts and Connections"}/>} />
-          <Route path="/search/1" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Biology"}/>} />
-          <Route path="/search/2" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Human Biology"}/>} />
-          <Route path="/search/3" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Exploring Biology in the Labratory"}/>} />
-          <Route path="/search/4" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Organic Chemistry"}/>} />
-          <Route path="/search/5" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Conceptual Chemistry"}/>} />
-          <Route path="/search/6" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Physical Chemistry of Polymers"}/>} />
-          <Route path="/search/7" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Organic Chemistry 2"}/>} />
-          <Route path="/search/8" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Mathematics"}/>} />
-          <Route path="/search/9" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Geometry"}/>} />
-          <Route path="/search/10" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Elementary Calculus"}/>} />
-          <Route path="/search/11" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Essential Mathematics for Engineers"}/>} />
+          <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
           <Route exact path="/profile/0" render={(props) => <Profile {...props} data={this.findInData("people", 0)} />} />
           <Route exact path="/profile/1" render={(props) => <Profile {...props} data={this.findInData("people", 1)} />} />
           <Route exact path="/profile/2" render={(props) => <Profile {...props} data={this.findInData("people", 2)} />} />

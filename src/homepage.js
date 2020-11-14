@@ -29,8 +29,8 @@ class HomePage extends React.Component {
             exactSearchKey: ""
         };
 
-        if(props.search !== undefined){
-            this.state.exactSearchKey = props.search;
+        if(props.search){
+            this.state.exactSearchKey = this.props.appData["textbooks"][this.props.match.params.id]["name"];
         }
     }
 

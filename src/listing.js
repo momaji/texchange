@@ -12,7 +12,6 @@ class Listing extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.data)
         this.state = {
             id: this.props.match.params.id,
             name: "",
@@ -28,7 +27,6 @@ class Listing extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.data["textbooks"][this.state.id]["name"])
         this.setState
             ({
                 id: this.props.match.params.id,
