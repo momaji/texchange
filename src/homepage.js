@@ -30,7 +30,7 @@ class HomePage extends React.Component {
         };
 
         if(props.search){
-            this.state.exactSearchKey = this.props.appData["textbooks"][this.props.match.params.id]["name"];
+            this.state.exactSearchKey = this.props.appData["textbooks"][this.props.match.params.id]["name"]; //search for this name exactly
         }
     }
 

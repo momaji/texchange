@@ -26,19 +26,27 @@ class Listing extends React.Component {
         };
     }
 
+    findInData(name, id) {
+        var source = this.props.data[name];
+        var result = source.filter(element => (element['id'] == id));
+        return result;
+    }
+
     componentDidMount() {
+        var textbookData = this.findInData("textbooks",this.props.match.params.id)[0];
+        console.log(textbookData)
         this.setState
             ({
                 id: this.props.match.params.id,
-                name: this.props.data["textbooks"][this.state.id]["name"],
-                author: this.props.data["textbooks"][this.state.id]["author"],
-                published: this.props.data["textbooks"][this.state.id]["published"],
-                price: this.props.data["textbooks"][this.state.id]["price"],
-                course: this.props.data["textbooks"][this.state.id]["course"],
-                src: this.props.data["textbooks"][this.state.id]["src"],
-                rating: this.props.data["textbooks"][this.state.id]["rating"],
-                location: this.props.data["textbooks"][this.state.id]["location"],
-                personId: this.props.data["textbooks"][this.state.id]["personId"]
+                name: textbookData["name"],
+                author: textbookData["author"],
+                published: textbookData["published"],
+                price: textbookData["price"],
+                course: textbookData["course"],
+                src: textbookData["src"],
+                rating: textbookData["rating"],
+                location: textbookData["location"],
+                personId: textbookData["personId"]
             });
     }
 
@@ -46,8 +54,8 @@ class Listing extends React.Component {
         return "/profile/" + this.state.personId;
     }
 
-    getSearchUrl(){
-        return "/search/"  + this.state.id;
+    getSearchUrl() {
+        return "/search/" + this.state.id;
     }
     render() {
         return (
@@ -67,7 +75,7 @@ class Listing extends React.Component {
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
                         <Row>
                             <Col>
-                                <p>Review Score: {this.state.rating}</p> 
+                                <p>Review Score: {this.state.rating}</p>
                             </Col>
                             <Col>
                                 <p>Location: {this.state.location}</p>
@@ -76,7 +84,7 @@ class Listing extends React.Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
                         <Row>
                             <Col>
-                        <h3>Price: ${this.state.price}</h3>
+                                <h3>Price: ${this.state.price}</h3>
                             </Col>
                         </Row>
                     </Col>
