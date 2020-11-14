@@ -104,11 +104,11 @@ class TexNavbar extends React.Component{
           <Route path="/search/9" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Geometry"}/>} />
           <Route path="/search/10" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Elementary Calculus"}/>} />
           <Route path="/search/11" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={data} search={"Essential Mathematics for Engineers"}/>} />
-          <Route exact path="/profile/0" render={(props) => <Profile {...props} appData={data} id={0} />} />
-          <Route exact path="/profile/1" render={(props) => <Profile {...props} appData={data} id={1} />} />
-          <Route exact path="/profile/2" render={(props) => <Profile {...props} appData={data} id={2} />} />
-          <Route exact path="/profile/3" render={(props) => <Profile {...props} appData={data} id={3} />} />
-          <Route exact path="/profile/4" render={(props) => <Profile {...props} appData={data} id={4} />} />
+          <Route exact path="/profile/0" render={(props) => <Profile {...props} data={this.findInData("people", 0)} />} />
+          <Route exact path="/profile/1" render={(props) => <Profile {...props} data={this.findInData("people", 1)} />} />
+          <Route exact path="/profile/2" render={(props) => <Profile {...props} data={this.findInData("people", 2)} />} />
+          <Route exact path="/profile/3" render={(props) => <Profile {...props} data={this.findInData("people", 3)} />} />
+          <Route exact path="/profile/4" render={(props) => <Profile {...props} data={this.findInData("people", 4)} />} />
           <Route path="/books/0" render={(props) => <Listing {...props} data={this.findInData("textbooks", 0)} />}></Route>
           <Route path="/books/1" render={(props) => <Listing {...props} data={this.findInData("textbooks", 1)}/>}></Route>
           <Route path="/books/2" render={(props) => <Listing {...props} data={this.findInData("textbooks", 2)} />}></Route>
