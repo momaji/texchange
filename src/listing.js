@@ -1,12 +1,11 @@
 //The JS code for the Profile React Component
 import React from 'react';
-import { Container, Row, Col, Dropdown, Form, Image } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Jumbotron, Image } from 'react-bootstrap';
 
 
-class Listing extends React.Component{
+class Listing extends React.Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {
             id: "",
@@ -17,41 +16,52 @@ class Listing extends React.Component{
             course: "",
             src: "",
             rating: "",
-            location: "" 
+            location: ""
         };
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.setState
-        ({            
-            id: this.props.data.id["id"],
-            name: this.props.data["name"],
-            author: this.props.data["author"],
-            published: this.props.data["published"],
-            price: this.props.data["price"],
-            course: this.props.data["course"],
-            src: this.props.data["src"],
-            rating: this.props.data["rating"],
-            location: this.props.data["location"]
-        });
-    }   
+            ({
+                id: this.props.data.id["id"],
+                name: this.props.data["name"],
+                author: this.props.data["author"],
+                published: this.props.data["published"],
+                price: this.props.data["price"],
+                course: this.props.data["course"],
+                src: this.props.data["src"],
+                rating: this.props.data["rating"],
+                location: this.props.data["location"]
+            });
+    }
 
-    render()
-    {
+    render() {
         return (
-            <Container fluid="true">
+            <Container>
+                <Jumbotron>
+                    <h1>{this.state.name}</h1>
+                </Jumbotron>
                 <Row>
                     <Col>
-                        <h1>REEREARA</h1>
-                        <p>{this.state.name}</p>
-                        <p>{this.state.author}</p>
-                        <p>{this.state.published}</p>
-                        <p>{this.state.price}</p>
-                        <p>{this.state.course}</p>
-                        <p>{this.state.src}</p>
-                        <p>{this.state.rating}</p>
-                        <p>{this.state.location}</p>
+                        <Image src={window.location.origin + this.state.src} height={360} />
+                        <p>Author: {this.state.author}</p>
+                        <p>Course: {this.state.course}</p>
+                        <p>Published Date: {this.state.published}</p>
+                    </Col>
+                    <Col>
+                        <h4>Seller</h4>
+                        <Row>
+                            <Col>
+                            <p></p>
+                            </Col>
+                            <Col>
+                        <p>Review Score: {this.state.rating}</p>
+                            </Col>
+                        </Row>
+                        <p>Sellers Notes</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida. Maecenas ut pharetra mauris, eu volutpat ex. Ut faucibus mi in dolor rutrum, non bibendum lectus bibendum. Vestibulum mattis vestibulum suscipit.</p>
+                        <p>Location: {this.state.location}</p>
+                        <p>Price: ${this.state.price}</p>
                     </Col>
                 </Row>
             </Container>

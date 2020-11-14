@@ -20,7 +20,15 @@ var data = {
     "emails": ["janetkim@gmail.com", "bachk.5p00n@hotmail.com", "yfm2011@yahoo.com", "anthonyf@gmail.com", "drewisgooden@outlook.com"],
     "numbers": ["647-123-4567", "416-821-5211", "905-800-5009", "647-929-3264", "416-666-4205"],
     "profileLocations": ["Toronto, ON", "Toronto, ON", "Hamilton, ON", "Hamilton, ON", "Brampton, ON"],
-    "avatars": ["/image/janet.jpg", "/image/bach.jpg", "/image/ray.jpg", "/image/fantano.jpg", "/image/gooden.jpg"]
+    "avatars": ["/image/janet.jpg", "/image/bach.jpg", "/image/ray.jpg", "/image/fantano.jpg", "/image/gooden.jpg"],
+    //This is how the people should be structured
+    "people":[
+        {"id":0, "firstName": "Janet", "lastName": "Kim", "email": "janetkim@gmail.com", "phone":"647-123-4567", "location": "Toronto, ON", "avatar":"/image/janet.jpg"},
+        {"id":1, "firstName": "King", "lastName": "Bach", "email": "bachk.5p00n@hotmail.com", "phone":"416-821-5211", "location": "Toronto, ON", "avatar":"/image/bach.jpg"},
+        {"id":2, "firstName": "Ray-William", "lastName": "Johnson", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg"},
+        {"id":3, "firstName": "Anthony", "lastName": "Fantano", "email": "anthonyf@gmail.com", "phone":"647-929-3264", "location": "Hamilton, ON", "avatar":"/image/fantano.jpg"},
+        {"id":4, "firstName": "Drew", "lastName": "Gooden", "email": "drewisgooden@outlook.com", "phone":"416-666-4205", "location": "Brampton, ON", "avatar":"/image/gooden.jpg"}
+    ]
 }
 
 export default data;

@@ -4,7 +4,8 @@ import { Container, Row, Col, Dropdown, Form, Image } from 'react-bootstrap';
 import {
     HashRouter as Router,
     Route,
-    Link
+    Link,
+    NavLink
 } from 'react-router-dom';
 import Listing from './listing.js';
 
@@ -179,8 +180,8 @@ class HomePage extends React.Component {
                         <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} >
                             <p>Average Seller Review: {book.rating}</p>
                             <Image src={window.location.origin + book.src} height={180} />
+                            <p></p>
                             <Link exact to={this.getBookId(book)}>View Listing</Link>
-                            <Route exact path={this.getBookId(book)} render={(props) => <Listing {...props} data={book} />}></Route>
                             <p>{book.name}</p>
                             <p>{book.author}</p>
                             <p>${book.price}</p>
@@ -194,7 +195,6 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <Router>
             <Container fluid="true">
                 <Row>
                     <Col sm={2}>
@@ -248,7 +248,6 @@ class HomePage extends React.Component {
                     </Col>
                 </Row>
             </Container>
-            </Router>
         );
     }
 }
