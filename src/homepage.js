@@ -31,7 +31,7 @@ class HomePage extends React.Component {
 
         if(props.search){
             var textbookData = this.findInData("textbooks",this.props.match.params.id);
-            this.state.exactSearchKey = textbookData["name"]; //search for this name exactly
+            this.state.exactSearchKey = textbookData["name"]; //search for this name exactly, ideally would be isbn
         }
     }
 
