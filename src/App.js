@@ -75,7 +75,7 @@ class App extends React.Component{
       editModalTextBookPrice: book.price,
       editModalTextBookFlexible: book.flexible,
       editModalTextBookDatePublished: book.published,
-      editModalTextBookDescription: '',
+      editModalTextBookDescription: book.description,
       editModalTextBookCourses: book.course,
       editModalTextBookFile: book.src,
       editModalTextBookId: book.id
@@ -148,7 +148,7 @@ class App extends React.Component{
   }
 
   createListing() {
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible }
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
@@ -166,7 +166,7 @@ class App extends React.Component{
   }
 
   editListing() {
-    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible }
+    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
     let newData = this.state.appData;
     let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
     newTextBookArr.push(info)

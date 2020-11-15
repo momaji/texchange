@@ -8,6 +8,9 @@ import {
 } from 'react-router-dom';
 import { BsFillPersonFill } from 'react-icons/bs';
 
+// <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
+
+
 class Listing extends React.Component {
 
     constructor(props) {
@@ -22,7 +25,8 @@ class Listing extends React.Component {
             src: "",
             rating: "",
             location: "",
-            personId: ""
+            personId: "",
+            description: ""
         };
     }
 
@@ -44,7 +48,8 @@ class Listing extends React.Component {
                 src: textbookData["src"],
                 rating: textbookData["rating"],
                 location: textbookData["location"],
-                personId: textbookData["personId"]
+                personId: textbookData["personId"],
+                description: textbookData["description"]
             });
     }
 
@@ -84,7 +89,7 @@ class Listing extends React.Component {
                                 <p>Location: {this.state.location}</p>
                             </Col>
                         </Row>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
+                        <p>{this.state.description}</p>
                         <Row>
                             <Col>
                                 <h3>Price: ${this.state.price}</h3>
