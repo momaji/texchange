@@ -6,6 +6,10 @@ import SellModal from './sellbook.js';
 import EditModal from './editbook.js';
 import data from './data.js'
 import React from "react";
+import {Image, Modal} from 'react-bootstrap';
+import success from './success_modal.png';
+import logo from './texchange_logo.png';
+
 
 //TexNavBar cannot be in a div otherwise sticky position will not work!!!
 class App extends React.Component{
@@ -35,7 +39,8 @@ class App extends React.Component{
       editModalTextBookDescription: '',
       editModalTextBookCourses: '',
       editModalTextBookFile: '',
-      editModalTextBookId:''
+      editModalTextBookId:'',
+      successAlertVisible:false
   };
 
     this.createListing = this.createListing.bind(this)
@@ -46,9 +51,15 @@ class App extends React.Component{
     this.closeEditModal = this.closeEditModal.bind(this)
   }
 
+  closeSuccessModal(){
+    this.setState({
+      successAlertVisible: false
+    });
+  }
+
   closeSellModal(){
     this.setState({
-      sellModalVisible: false
+      sellModalVisible: false,
     });
   }
 
@@ -60,7 +71,7 @@ class App extends React.Component{
 
   closeEditModal(){
     this.setState({
-      editModalVisible: false
+      editModalVisible: false,
     });
   }
 
@@ -160,9 +171,14 @@ class App extends React.Component{
       sellTextBookDatePublished: '',
       sellTextBookDescription: '',
       sellTextBookCourses: '',
-      sellTextBookFile: ''
+      sellTextBookFile: '',
+      sellModalVisible: false,
+      successAlertVisible: true
     })
-    this.closeSellModal()
+    
+    setTimeout( () => this.setState({successAlertVisible: false}), 2000);
+
+    // this.closeSellModal()
   }
 
   editListing() {
@@ -188,14 +204,24 @@ class App extends React.Component{
       editModalTextBookDescription: '',
       editModalTextBookCourses: '',
       editModalTextBookFile: '',
-      editModalTextBookId: ''
+      editModalTextBookId: '',
+      editModalVisible: false,
+      successAlertVisible: true
     })
-    this.closeEditModal()
-  }
 
+    setTimeout( () => this.setState({successAlertVisible: false}), 2000);
+    // this.closeEditModal()
+  }
+  // style={{backgroundColor: '#f3969a', justifyContent: 'center', color: '#78c2ad '}}
+  // <Modal.Body style={{backgroundColor: '#f3969a'}} >
+  //
+  // </Modal.Body>
   render(){
     return (
       <div className="App">
+        <Modal size="sm" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.successAlertVisible} onHide={this.closeSuccessModal.bind(this)}>
+        <Image src={success} style={{width: "100%", height: "100%", padding: "0px 0px 0px 0px"}} />
+        </Modal>
         <TexNavbar appData={this.state.appData} openModal={this.showSellModal} openEditModal={this.showEditModal}/>
         <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}
         createListing={this.createListing}
