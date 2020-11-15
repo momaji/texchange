@@ -41,7 +41,7 @@ class Profile extends React.Component{
     findInData(name, id)
     {
         var source = this.props.appData[name];
-        return source.filter(element => (element['id'] == id))[0];
+        return source.filter(element => (element['id'] === id))[0];
     }
 
     componentDidMount()
@@ -72,13 +72,13 @@ class Profile extends React.Component{
                 break;
             case "★★★☆☆":
                 numStars = 3;
-                break;       
+                break;
             case "★★☆☆☆":
                 numStars = 2;
-                break;    
+                break;
             case "★☆☆☆☆":
                 numStars = 1;
-                break; 
+                break;
             default:
                 numStars = 4;
         }
@@ -96,15 +96,15 @@ class Profile extends React.Component{
             rating: numStars,
             books: bookList,
             favourited: favouritedList
-        });  
+        });
     }
 
-    getBookUrl(book) 
+    getBookUrl(book)
     {
         return "/books/" + book["id"];
     }
 
-    changeRating = (newValue) => 
+    changeRating = (newValue) =>
     {
         this.setState({rating: newValue, ratingSubmitted: true});
     }
@@ -136,21 +136,21 @@ class Profile extends React.Component{
             location: this.state.location
         }); 
     }
-    
+
     render()
     {
         return (
-            <Container fluid="true">  
+            <Container fluid="true">
                 {this.renderAlert()}
                 <Row>
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile 
-                        {this.state.profileID == 0 && <Button onClick={this.editFields.bind(this)} style={{marginLeft: "25px"}} size="lg"><FaPencilAlt></FaPencilAlt></Button>}</h1>
+                        <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile
+                        {this.state.profileID === 0 && <span onClick={this.editFields} style={{paddingLeft: "25px"}}><GoPencil></GoPencil></span>}</h1>
                         <h2 className="float-right">Seller Rating:
-                        {this.state.rating != 0 && this.state.profileID != 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
-                        {this.state.rating != 0 && this.state.profileID == 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}</h2>
+                        {this.state.rating !== 0 && this.state.profileID !== 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
+                        {this.state.rating !== 0 && this.state.profileID === 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}</h2>
                     </Col>
                     <Col sm={1}>
                     </Col>
@@ -197,8 +197,8 @@ class Profile extends React.Component{
                 </Row>
                 <Row>
                     <Col sm={1}>
-                    </Col> 
-                    <Col sm={10}>  
+                    </Col>
+                    <Col sm={10}>
                         <Row>
                             {this.state.books.map((book, index) =>
                                     <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}><br></br>
@@ -209,9 +209,9 @@ class Profile extends React.Component{
                                         <span>{book.author}</span>
                                         <p>${book.price}</p>
                                     </Col>
-                                )} 
-                        </Row> 
-                    </Col> 
+                                )}
+                        </Row>
+                    </Col>
                     <Col sm={1}>
                     </Col>
                 </Row><br></br><br></br>

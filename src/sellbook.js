@@ -11,6 +11,9 @@ const yearOpts = Array(now - (now - 200)).fill('').map((v, idx) => now - idx);
 //    )))}
 // </Form.Control>
 
+// <Form.File id="formBasicFile" label="Upload Pictures" onChange={ (event)=>{setFile(URL.createObjectURL(event.target.files[0]))} }/>
+// <Image style={{maxWidth: "100px", maxHeight: "100px", paddingTop: "10px"}} src={file}/>
+
 //if react in strict mode then anamation={false} must be set for the modal
 function SellModal(props) {
   const [file, setFile] = useState(0);
@@ -63,7 +66,7 @@ function SellModal(props) {
 
         <Form.Group controlId="formBasicDate">
           <Form.Label>Date Published</Form.Label>
-          <Form.Control value={props.datePublished} onChange={(e, data)=>{props.datePublishedInputHandler(data.value)}} type="Date" placeholder="Enter Author Name" />
+          <Form.Control value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
         </Form.Group>
         <Form.Group controlId="formBasicDescription">
           <Form.Label>Description</Form.Label>
@@ -71,11 +74,11 @@ function SellModal(props) {
         </Form.Group>
         <Form.Group controlId="formBasicCourses">
           <Form.Label>Courses</Form.Label>
-          <Form.Control value={props.course} onChange={props.courseInputHandler} type="text" placeholder="Enter Relevant Courses" />
+          <Form.Control value={props.courses} onChange={props.coursesInputHandler} type="text" placeholder="Enter Relevant Courses" />
         </Form.Group>
         <Form.Group>
-          <Form.File id="formBasicFile" label="Upload Pictures" onChange={ (event)=>{setFile(URL.createObjectURL(event.target.files[0]))} }/>
-          <Image style={{maxWidth: "100px", maxHeight: "100px", paddingTop: "10px"}} src={file}/>
+          <Form.File id="formBasicFile" label="Upload Pictures" filename={props.file} onChange={ props.fileInputHandler }/>
+          <Image style={{maxWidth: "100px", maxHeight: "100px", paddingTop: "10px"}} src={props.file} type='application/json'/>
         </Form.Group>
 
       </Form>
