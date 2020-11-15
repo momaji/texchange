@@ -32,8 +32,7 @@ class Listing extends React.Component {
     }
 
     componentDidMount() {
-        var textbookData = this.findInData("textbooks",this.props.match.params.id);
-        console.log(textbookData)
+        var textbookData = this.findInData("textbooks", this.props.match.params.id);
         this.setState
             ({
                 id: this.props.match.params.id,
@@ -56,19 +55,24 @@ class Listing extends React.Component {
     getSearchUrl() {
         return "/search/" + this.state.id;
     }
+
+    getMailToLink() {
+        var person = this.findInData("people", this.state.personId);
+        return "mailto:" + person["email"];
+    }
+
     render() {
         return (
-            <Container>
+            <Container align="center">
                 <Jumbotron>
                     <h1>{this.state.name}</h1>
                     <Link to={this.getSearchUrl()}>View all listings for this book</Link>
                 </Jumbotron>
-                <Row>
-                    <Col>
-                        <Image src={window.location.origin + this.state.src} height={360} />
-                        <p>Author: {this.state.author}</p>
-                        <p>Course: {this.state.course}</p>
-                        <p>Published Date: {this.state.published}</p>
+                <Row className="mb-3">
+                    <Col className="mb-3">
+                        <Image src={window.location.origin + this.state.src} />
+                        <h3 className="mt-1">By: {this.state.author}</h3>
+                        <p>Course: {this.state.course}, Published Date: {this.state.published}</p>
                     </Col>
                     <Col>
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
@@ -84,6 +88,7 @@ class Listing extends React.Component {
                         <Row>
                             <Col>
                                 <h3>Price: ${this.state.price}</h3>
+                                <a href={this.getMailToLink()}>Contact Seller for Purchase</a>
                             </Col>
                         </Row>
                     </Col>
