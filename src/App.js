@@ -81,24 +81,37 @@ class App extends React.Component{
   }
 
   fileStateChange(event) {
-    this.setState({sellTextBookFile: event.target.value});
+    this.setState({sellTextBookFile: URL.createObjectURL(event.target.files[0])});
   }
 
   createListing() {
-    // console.log('name: '+this.state.sellTextBookName)
-    // console.log('author: '+this.state.sellTexBookAuthor)
-    // console.log('price: '+this.state.sellTextBookPrice)
-    // console.log('flexible: '+this.state.sellTextBookFlexible)
-    // console.log('date published: '+this.state.sellTextBookDatePublished)
-    // console.log('description: '+this.state.sellTextBookDescription)
-    // console.log('course: ' + this.state.sellTextBookCourses)
-    // console.log('file: ' +this.state.sellTextBookFile)
-    let id = this.state.appData.length
-    let info = { "name": "New Textbook", "author": "Moziah San Vicente", "published": "2020-11-14", "price": 20, "course": "ENG 5501", "src": "/image/chemistry_4.jpg", "rating": "☆☆☆", "location": "Toronto", "id": 50, "personId": 2 }
+    console.log('name: '+this.state.sellTextBookName)
+    console.log('author: '+this.state.sellTextBookAuthor)
+    console.log('price: '+this.state.sellTextBookPrice)
+    console.log('flexible: '+this.state.sellTextBookFlexible)
+    console.log('date published: '+this.state.sellTextBookDatePublished)
+    console.log('description: '+this.state.sellTextBookDescription)
+    console.log('course: ' + this.state.sellTextBookCourses)
+    console.log('file: ' +this.state.sellTextBookFile)
+    let id = this.state.appData.textbooks.length
+    console.log('id: '+id)
+    let url = this.state.sellTextBookFile
+    console.log('url: '+url)
+    let url2 = url.split('/')[-1]
+    console.log('url: '+'/'+url2)
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": `/${url2}`, "rating": "☆☆☆", "location": "Toronto", "id": 50, "personId": 2 }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
-      appData: newData
+      appData: newData,
+      sellTextBookName: '',
+      sellTextBookAuthor: '',
+      sellTextBookPrice: '',
+      sellTextBookFlexible: false,
+      sellTextBookDatePublished: '',
+      sellTextBookDescription: '',
+      sellTextBookCourses: '',
+      sellTextBookFile: ''
     })
     this.closeSellModal()
   }
