@@ -1,0 +1,12 @@
+Moziah
+ - NavBar
+ - Sell Textbooks
+ - Edit Textbook for sale listings
+ - View Users Textbooks for sale on profile page
+ - Added dynamic descriptions to textbook listing page
+
+Paul
+
+Eoin
+
+Mohammad
