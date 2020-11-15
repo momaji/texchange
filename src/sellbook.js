@@ -17,21 +17,21 @@ function SellModal(props) {
           Create New TextBook Listing
         </Modal.Title>
       </Modal.Header>
+      <Form onSubmit={props.createListing}>
       <Modal.Body>
-      <Form>
         <Form.Group controlId="formBasicName">
           <Form.Label>Textbook Name</Form.Label>
-          <Form.Control value={props.name} onChange={props.nameInputHandler} type="text" placeholder="Enter Textbook Name" />
+          <Form.Control required value={props.name} onChange={props.nameInputHandler} type="text" placeholder="Enter Textbook Name" />
         </Form.Group>
         <Form.Group controlId="formBasicAuthor">
           <Form.Label>Textbook Author</Form.Label>
-          <Form.Control value={props.author} onChange={props.authorInputHandler} type="text" placeholder="Enter Author Name" />
+          <Form.Control required value={props.author} onChange={props.authorInputHandler} type="text" placeholder="Enter Author Name" />
         </Form.Group>
         <Row>
           <Col xs={9}>
             <Form.Group controlId="formBasicPrice">
               <Form.Label>Price</Form.Label>
-              <Form.Control value={props.price} onChange={props.priceInputHandler} as="select" placeholder="Enter Price" >
+              <Form.Control required value={props.price} onChange={props.priceInputHandler} as="select" placeholder="Enter Price" >
                  {priceOpts.map( ((num) => (
                    <option key={num} value={num}>{num}</option>
                  )))}
@@ -47,7 +47,7 @@ function SellModal(props) {
         </Row>
         <Form.Group controlId="formBasicDate">
           <Form.Label>Date Published</Form.Label>
-          <Form.Control value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
+          <Form.Control required value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
         </Form.Group>
         <Form.Group controlId="formBasicDescription">
           <Form.Label>Description</Form.Label>
@@ -58,19 +58,19 @@ function SellModal(props) {
           <Form.Control value={props.courses} onChange={props.coursesInputHandler} type="text" placeholder="Enter Relevant Courses" />
         </Form.Group>
         <Form.Group>
-          <Form.File id="formBasicFile" label="Upload Pictures" filename={props.file} onChange={ props.fileInputHandler }/>
+          <Form.File required id="formBasicFile" label="Upload Pictures" filename={props.file} onChange={ props.fileInputHandler }/>
           <Image style={{maxWidth: "100px", maxHeight: "100px", paddingTop: "10px"}} src={props.file} type='application/json'/>
         </Form.Group>
-      </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button className="btn btn-secondary mr-auto" onClick={props.onHide}>Close</Button>
 
-        <Button className="btn btn-primary" variant="primary" onClick={props.createListing}>
+        <Button className="btn btn-primary" variant="primary" type="submit" >
           Submit
         </Button>
 
       </Modal.Footer>
+      </Form>
     </Modal>
   );
 }

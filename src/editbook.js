@@ -17,21 +17,21 @@ function EditModal(props) {
           Edit TextBook Listing
         </Modal.Title>
       </Modal.Header>
+      <Form onSubmit={props.editListing}>
       <Modal.Body>
-      <Form>
         <Form.Group controlId="formBasicEditName">
           <Form.Label>Textbook Name</Form.Label>
-          <Form.Control value={props.name} onChange={props.nameInputHandler} type="text" placeholder="Enter Textbook Name" />
+          <Form.Control required value={props.name} onChange={props.nameInputHandler} type="text" placeholder="Enter Textbook Name" />
         </Form.Group>
         <Form.Group controlId="formBasicAuthor">
           <Form.Label>Textbook Author</Form.Label>
-          <Form.Control value={props.author} onChange={props.authorInputHandler} type="text" placeholder="Enter Author Name" />
+          <Form.Control required value={props.author} onChange={props.authorInputHandler} type="text" placeholder="Enter Author Name" />
         </Form.Group>
         <Row>
           <Col xs={9}>
             <Form.Group controlId="formBasicPrice">
               <Form.Label>Price</Form.Label>
-              <Form.Control value={props.price} onChange={props.priceInputHandler} as="select" placeholder="Enter Price" >
+              <Form.Control required value={props.price} onChange={props.priceInputHandler} as="select" placeholder="Enter Price" >
                  {priceOpts.map( ((num) => (
                    <option key={num} value={num}>{num}</option>
                  )))}
@@ -47,7 +47,7 @@ function EditModal(props) {
         </Row>
         <Form.Group controlId="formBasicDate">
           <Form.Label>Date Published</Form.Label>
-          <Form.Control value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
+          <Form.Control required value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
         </Form.Group>
         <Form.Group controlId="formBasicDescription">
           <Form.Label>Description</Form.Label>
@@ -61,16 +61,14 @@ function EditModal(props) {
           <Form.File id="formBasicFile" label="Upload Pictures" filename={props.file} onChange={ props.fileInputHandler }/>
           <Image style={{maxWidth: "100px", maxHeight: "100px", paddingTop: "10px"}} src={props.file} type='application/json'/>
         </Form.Group>
-      </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button className="btn btn-secondary mr-auto" onClick={props.onHide}>Cancel</Button>
-
-        <Button className="btn btn-primary" variant="primary" onClick={props.editListing}>
+        <Button className="btn btn-primary" variant="primary" type="submit">
           Save
         </Button>
-
       </Modal.Footer>
+      </Form>
     </Modal>
   );
 }
