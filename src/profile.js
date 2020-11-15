@@ -147,7 +147,7 @@ class Profile extends React.Component{
                     </Col>
                     <Col>
                         <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile
-                        {this.state.profileID === 0 && <span onClick={this.editFields} style={{paddingLeft: "25px"}}><GoPencil></GoPencil></span>}</h1>
+                        {this.state.profileID === 0 && <span onClick={this.editFields} style={{paddingLeft: "25px"}}><FaPencilAlt></FaPencilAlt></span>}</h1>
                         <h2 className="float-right">Seller Rating:
                         {this.state.rating !== 0 && this.state.profileID !== 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
                         {this.state.rating !== 0 && this.state.profileID === 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}</h2>
