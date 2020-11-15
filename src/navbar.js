@@ -44,7 +44,7 @@ class TexNavbar extends React.Component{
   renderAlert(){
     if(this.state.nullRefAlert){
       return(
-        <Alert variant="danger">Looking for a book? Click Search again to begin!<button type="button" onClick={this.handleProfileClick} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
+        <Alert variant="danger">Looking for a book? Click Search again to begin!<button type="button" onClick={this.handleProfileClick} className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
       );
     }
   }
