@@ -124,11 +124,13 @@ class Profile extends React.Component{
         ({
             editable: !this.state.editable
         });
-        
+
         this.props.editProfile();
     }
 
     render(){
+    let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0]
+    console.log(profile)
     let bookList2 = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID )
 
         return (
@@ -154,7 +156,7 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={this.props.editPic}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
+                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={this.props.editPic}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={profile.avatar} alt={this.state.firstName} width="350" height="350"></Image>}
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
