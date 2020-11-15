@@ -1,9 +1,9 @@
 //The JS code for the Profile React Component
 import React from 'react';
-import { Container, Row, Col, Image, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Image, Alert, Button, Form } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
-import { GoPencil } from 'react-icons/go';
+import { FaPencilAlt } from 'react-icons/fa';
 
 const thirdExample = {
     size: 40,
@@ -33,9 +33,9 @@ class Profile extends React.Component{
             rating: 0,
             books: [],
             favourited: [],
-            ratingSubmitted: false
+            ratingSubmitted: false,
+            editable: false
         };
-        this.closeAlert = this.closeAlert.bind(this);
     }
 
     findInData(name, id)
@@ -113,7 +113,7 @@ class Profile extends React.Component{
     {
         if(this.state.ratingSubmitted){
           return(
-            <Alert variant="success">Thank you for your rating. We will review it and adjust the average accordingly.<button type="button" onClick={this.closeAlert} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
+            <Alert variant="success">Thank you for your rating. We will review it and adjust the average accordingly.<button type="button" onClick={this.closeAlert.bind(this)} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
           );
         }
     }
@@ -125,12 +125,20 @@ class Profile extends React.Component{
 
     editFields()
     {
-        console.log("hi");
+        this.setState
+        ({
+            editable: !this.state.editable, 
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
+            email: this.state.email,
+            number: this.state.number,
+            location: this.state.location
+        }); 
     }
     
     render()
     {
-        console.log(this.state.rating);
         return (
             <Container fluid="true">  
                 {this.renderAlert()}
@@ -139,7 +147,7 @@ class Profile extends React.Component{
                     </Col>
                     <Col>
                         <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile 
-                        {this.state.profileID == 0 && <span onClick={this.editFields} style={{paddingLeft: "25px"}}><GoPencil></GoPencil></span>}</h1>
+                        {this.state.profileID == 0 && <Button onClick={this.editFields.bind(this)} style={{marginLeft: "25px"}} size="lg"><FaPencilAlt></FaPencilAlt></Button>}</h1>
                         <h2 className="float-right">Seller Rating:
                         {this.state.rating != 0 && this.state.profileID != 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
                         {this.state.rating != 0 && this.state.profileID == 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}</h2>
@@ -153,11 +161,26 @@ class Profile extends React.Component{
                     <Col>
                         <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>
                         <div style={{paddingTop: "17px"}}>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Full Name: </span>{this.state.firstName} {this.state.lastName}</h4><br></br><br></br><br></br>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Gender: </span>{this.state.gender}</h4><br></br><br></br><br></br>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Email Name: </span>{this.state.email}</h4><br></br><br></br><br></br>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Phone Number: </span>{this.state.number}</h4><br></br><br></br><br></br>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Location: </span>{this.state.location}</h4><br></br><br></br><br></br>
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
+                            {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
+                            <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
+                            : this.state.firstName + " " + this.state.lastName}</Form></h4><br></br><br></br><br></br>
+                            
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Gender:&nbsp;</Form.Label>
+                            {this.state.editable ? <Form.Control defaultValue={this.state.gender} as="select" value={this.state.gender} onChange={(event) => this.setState({gender: event.target.value})}><option>Male</option><option>Female</option><option>Other</option></Form.Control>
+                            : this.state.gender}</Form></h4><br></br><br></br><br></br>
+
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Email:&nbsp;</Form.Label>
+                            {this.state.editable ? <Form.Control defaultValue={this.state.email} type="input" value={this.state.email} onChange={(event) => this.setState({email: event.target.value})}></Form.Control>
+                            : this.state.email}</Form></h4><br></br><br></br><br></br>
+
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Phone Number:&nbsp;</Form.Label>
+                            {this.state.editable ? <Form.Control defaultValue={this.state.number} type="input" value={this.state.number} onChange={(event) => this.setState({number: event.target.value})}></Form.Control>
+                            : this.state.number}</Form></h4><br></br><br></br><br></br>
+
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Location:&nbsp;</Form.Label>
+                            {this.state.editable ? <Form.Control defaultValue={this.state.location} type="input" value={this.state.location} onChange={(event) => this.setState({location: event.target.value})}></Form.Control>
+                            : this.state.location}</Form></h4><br></br><br></br><br></br>
                         </div>
                     </Col>
                     <Col sm={1}>
