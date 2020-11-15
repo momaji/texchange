@@ -105,20 +105,24 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={1}>
                     </Col>
-                </Row><br></br>
+                </Row>
                 <Row>
                     <Col sm={1}>
-                    </Col>    
-                    {this.state.books.map((book, index) =>
-                            <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}>
-                                <Image src={window.location.origin + book.src} height={180} />
-                                <p></p>
-                                <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
-                                <span>{book.name}</span><br></br>
-                                <span>{book.author}</span>
-                                <p>${book.price}</p>
-                            </Col>
-                        )}  
+                    </Col> 
+                    <Col sm={10}>  
+                        <Row>
+                            {this.state.books.map((book, index) =>
+                                    <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}><br></br>
+                                        <Image src={window.location.origin + book.src} height={180} />
+                                        <p></p>
+                                        <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
+                                        <span>{book.name}</span><br></br>
+                                        <span>{book.author}</span>
+                                        <p>${book.price}</p>
+                                    </Col>
+                                )} 
+                        </Row> 
+                    </Col> 
                     <Col sm={1}>
                     </Col>
                 </Row><br></br><br></br>
@@ -130,20 +134,24 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={1}>
                     </Col>
-                </Row><br></br>
+                </Row>
                 <Row>
                     <Col sm={1}>
                     </Col>
-                    {this.state.favourited.map((book, index) =>
-                        <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} >
-                            <Image src={window.location.origin + book.src} height={180} />
-                            <p></p>
-                            <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
-                            <span>{book.name}</span><br></br>
-                            <span>{book.author}</span>
-                            <p>${book.price}</p>
-                        </Col>
-                    )}
+                    <Col sm={10}>
+                        <Row>
+                            {this.state.favourited.map((book, index) =>
+                                <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} ><br></br>
+                                    <Image src={window.location.origin + book.src} height={180} />
+                                    <p></p>
+                                    <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
+                                    <span>{book.name}</span><br></br>
+                                    <span>{book.author}</span>
+                                    <p>${book.price}</p>
+                                </Col>
+                            )}
+                        </Row>
+                    </Col>
                     <Col sm={1}>
                     </Col>
                 </Row>
