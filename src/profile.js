@@ -139,14 +139,9 @@ class Profile extends React.Component{
             gender: this.state.gender,
             email: this.state.email,
             number: this.state.number,
-<<<<<<< Updated upstream
             location: this.state.location,
             image: this.state.image
-        }); 
-=======
-            location: this.state.location
         });
->>>>>>> Stashed changes
     }
 
     render()
@@ -179,18 +174,11 @@ class Profile extends React.Component{
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
-<<<<<<< Updated upstream
                                 {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
                                 <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
                                 : this.state.firstName + " " + this.state.lastName}</Form>
                             </h4><br></br><br></br><br></br>
-                            
-=======
-                            {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
-                            <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
-                            : this.state.firstName + " " + this.state.lastName}</Form></h4><br></br><br></br><br></br>
 
->>>>>>> Stashed changes
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Gender:&nbsp;</Form.Label>
                                 {this.state.editable ? <Form.Control defaultValue={this.state.gender} as="select" value={this.state.gender} onChange={(event) => this.setState({gender: event.target.value})}>
                                 <option>Male</option><option>Female</option><option>Other</option></Form.Control> : this.state.gender}</Form>

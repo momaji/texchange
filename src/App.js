@@ -40,7 +40,7 @@ class App extends React.Component{
     this.createListing = this.createListing.bind(this)
     this.showSellModal = this.showSellModal.bind(this)
     this.closeSellModal = this.closeSellModal.bind(this)
-    this.editListing = this.editListing.bind(this) 
+    this.editListing = this.editListing.bind(this)
     this.showEditModal = this.showEditModal.bind(this)
     this.closeEditModal = this.closeEditModal.bind(this)
   }
@@ -136,19 +136,7 @@ class App extends React.Component{
   }
 
   createListing() {
-<<<<<<< Updated upstream
-    // console.log('name: '+this.state.sellTextBookName)
-    // console.log('author: '+this.state.sellTextBookAuthor)
-    // console.log('price: '+this.state.sellTextBookPrice)
-    // console.log('flexible: '+this.state.sellTextBookFlexible)
-    // console.log('date published: '+this.state.sellTextBookDatePublished)
-    // console.log('description: '+this.state.sellTextBookDescription)
-    // console.log('course: ' + this.state.sellTextBookCourses)
-    // console.log('file: ' +this.state.sellTextBookFile)
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 0 }
-=======
     let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 2 }
->>>>>>> Stashed changes
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
