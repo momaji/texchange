@@ -21,14 +21,7 @@ class Profile extends React.Component{
     constructor(props)
     {
         super(props);
-        this.state = {
-            profileID: this.props.match.params.id,
-            rating: 0,
-            books: [],
-            favourited: [],
-            ratingSubmitted: false,
-            editable: false
-        };
+        this.state = {ratingSubmitted: false, editable: false};
     }
 
     findInData(name, id)
@@ -37,19 +30,45 @@ class Profile extends React.Component{
         return source.filter(element => (element['id'] == id))[0];
     }
 
-    componentDidMount()
+    getBookUrl(book)
     {
-        var profileData = this.findInData("people", this.props.match.params.id);
-        var bookList = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID);
-        var favouritedList = [];
-        var numStars;
+        return "/books/" + book["id"];
+    }
 
-        for (var j = 0; j < profileData["favourited"].length; j++)
-        {
-            favouritedList.push(this.findInData("textbooks", profileData["favourited"][j]));
+    changeRating()
+    {
+        this.setState({ratingSubmitted: true});
+    }
+
+    renderAlert()
+    {
+        if(this.state.ratingSubmitted){
+          return(
+            <Alert variant="success">Thank you for your rating. We will review it and adjust the average accordingly.
+            <button type="button" onClick={this.closeAlert.bind(this)} className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
+          );
         }
+    }
 
-        switch(profileData["rating"])
+    closeAlert()
+    {
+        this.setState({ratingSubmitted: false});
+    }
+
+    editFields()
+    {
+        this.setState({editable: !this.state.editable});
+        this.props.editProfile();
+    }
+
+    render()
+    {
+        let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0];
+        let bookList = this.props.appData.textbooks.filter(book => book.personId == this.props.match.params.id );
+        let favouriteList = this.props.appData.textbooks.filter(book => this.props.appData.people[this.props.match.params.id].favourited.includes(book.id));
+        let numStars = 0;
+
+        switch(this.props.appData.people[this.props.match.params.id].rating)
         {
             case "★★★★★":
                 numStars = 5;
@@ -70,51 +89,6 @@ class Profile extends React.Component{
                 numStars = 4;
         }
 
-        this.setState
-        ({
-            profileID: this.props.match.params.id,
-            rating: numStars,
-            books: bookList,
-            favourited: favouritedList
-        });
-    }
-
-    getBookUrl(book)
-    {
-        return "/books/" + book["id"];
-    }
-
-    changeRating = (newValue) =>
-    {
-        this.setState({rating: newValue, ratingSubmitted: true});
-    }
-
-    renderAlert()
-    {
-        if(this.state.ratingSubmitted){
-          return(
-            <Alert variant="success">Thank you for your rating. We will review it and adjust the average accordingly.
-            <button type="button" onClick={this.closeAlert.bind(this)} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
-          );
-        }
-    }
-
-    closeAlert()
-    {
-        this.setState({ratingSubmitted: false});
-    }
-
-    editFields()
-    {
-        this.setState({editable: !this.state.editable});
-        this.props.editProfile();
-    }
-
-    render()
-    {
-        let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0]
-        let bookList2 = this.props.appData.textbooks.filter(book => book.personId == this.props.match.params.id )
-
         return (
             <Container fluid="true">
                 {this.renderAlert()}
@@ -127,8 +101,7 @@ class Profile extends React.Component{
                             {!this.state.editable ? <FaPencilAlt></FaPencilAlt> : <FaRegSave></FaRegSave>}</Button>}
                         </h1>
                         <h2 className="float-right">Seller Rating:
-                            {this.state.rating !== 0 && profile.id !== 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
-                            {this.state.rating !== 0 && profile.id === 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}
+                            {profile.id !== 0 ? <ReactStars {...thirdExample} value={numStars} onChange={this.changeRating.bind(this)}/> : <ReactStars {...thirdExample} value={numStars} edit={false} />}
                         </h2>
                     </Col>
                     <Col sm={1}>
@@ -185,7 +158,7 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={10}>
                         <Row>
-                            {bookList2.map((book, index) =>
+                            {bookList.map((book, index) =>
                                     <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}><br></br>
                                         <Image src={book.src} height={180} width={140} />
                                         <p></p>
@@ -215,7 +188,7 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={10}>
                         <Row>
-                            {this.state.favourited.map((book, index) =>
+                            {favouriteList.map((book, index) =>
                                 <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} ><br></br>
                                     <Image src={book.src} height={180} width={140} />
                                     <p></p>
