@@ -214,7 +214,7 @@ class Profile extends React.Component{
                                         <span>{book.name}</span><br></br>
                                         <span>{book.author}</span>
                                         <p>${book.price}</p>
-                                        <Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button>
+                                        {this.state.profileID === "0" && <Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button>}
                                     </Col>
                                 )}
                         </Row>
