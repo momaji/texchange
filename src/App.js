@@ -201,12 +201,12 @@ class App extends React.Component{
     this.setState({profilePic: URL.createObjectURL(event.target.files[0])});
   }
 
-  editProfile() 
+  editProfile()
   {
     let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": [], "rating": "★★★★☆" }
     let newData = this.state.appData;
 
-    let newPeople = this.state.appData.people.filter(person => person.id != 0);
+    let newPeople = newData.people.filter(person => person.id != 0);
     newPeople.push(info);
     newData.people = newPeople;
 
@@ -307,7 +307,7 @@ class App extends React.Component{
         <Modal size="sm" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.successAlertVisible} onHide={this.closeSuccessModal.bind(this)}>
           <Image src={success} style={{width: "100%", height: "100%", padding: "0px 0px 0px 0px"}} />
         </Modal>
-        
+
         <TexNavbar appData={this.state.appData} openModal={this.showSellModal} openEditModal={this.showEditModal}
           editProfile={this.editProfile.bind(this)}
           firstName={this.state.profileFirstName}
