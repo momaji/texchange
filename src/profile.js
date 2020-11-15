@@ -47,20 +47,9 @@ class Profile extends React.Component{
     componentDidMount()
     {
         var profileData = this.findInData("people", this.props.match.params.id);
-
-        var bookList = [];
+        var bookList = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID);
         var favouritedList = [];
         var numStars;
-        console.log(this.state.profileID)
-
-        bookList = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID )
-
-        // for (var i = 0; i < profileData["books"].length; i++)
-        // {
-        //     bookList.push(this.findInData("textbooks", profileData["books"][i]));
-        // }
-
-        console.log('booklist: '+bookList)
 
         for (var j = 0; j < profileData["favourited"].length; j++)
         {
