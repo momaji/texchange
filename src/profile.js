@@ -1,9 +1,19 @@
 //The JS code for the Profile React Component
 import React from 'react';
-import { Container, Row, Col, Image, Carousel } from 'react-bootstrap';
-import {
-    Link
-} from 'react-router-dom';
+import { Container, Row, Col, Image, Alert } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import ReactStars from "react-rating-stars-component";
+
+const thirdExample = {
+    size: 40,
+    count: 5,
+    isHalf: false,
+    color: "#f3969a",
+    activeColor: "#78c2ad",
+    onChange: newValue => {
+      console.log(`Example 3: new value is ${newValue}`);
+    }
+  };
 
 class Profile extends React.Component{
 
@@ -18,10 +28,13 @@ class Profile extends React.Component{
             number: "",
             location: "",
             image: "",
-            rating: "",
+            rating: 0,
             books: [],
-            favourited: []
+            favourited: [],
+            ratingSubmitted: false
         };
+
+        this.closeAlert = this.closeAlert.bind(this);
     }
 
     findInData(name, id)
@@ -36,6 +49,7 @@ class Profile extends React.Component{
 
         var bookList = [];
         var favouritedList = [];
+        var numStars;
 
         for (var i = 0; i < profileData["books"].length; i++)
         {
@@ -47,6 +61,27 @@ class Profile extends React.Component{
             favouritedList.push(this.findInData("textbooks", profileData["favourited"][j]));
         }
 
+        switch(profileData["rating"])
+        {
+            case "★★★★★":
+                numStars = 5;
+                break;
+            case "★★★★☆":
+                numStars = 4;
+                break;
+            case "★★★☆☆":
+                numStars = 3;
+                break;       
+            case "★★☆☆☆":
+                numStars = 2;
+                break;    
+            case "★☆☆☆☆":
+                numStars = 1;
+                break; 
+            default:
+                numStars = 0;
+        }
+
         this.setState
         ({
             profileID: this.props.match.params.id,
@@ -56,7 +91,7 @@ class Profile extends React.Component{
             number: profileData["phone"],
             location: profileData["location"],
             image: profileData["avatar"],
-            rating: profileData["rating"],
+            rating: numStars,
             books: bookList,
             favourited: favouritedList
         });  
@@ -67,20 +102,41 @@ class Profile extends React.Component{
         return "/books/" + book["id"];
     }
 
+    changeRating = (newValue) => 
+    {
+        this.setState({rating: newValue, ratingSubmitted: true});
+    }
+
+    renderAlert()
+    {
+        if(this.state.ratingSubmitted){
+          return(
+            <Alert variant="success">Thank you for your rating. We will review it and adjust the average accordingly.<button type="button" onClick={this.closeAlert} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
+          );
+        }
+    }
+
+    closeAlert()
+    {
+        this.setState({ratingSubmitted: false});
+    }
+    
     render()
     {
+        console.log(this.state.rating);
         return (
-            <Container fluid="true">
+            <Container fluid="true">  
+                {this.renderAlert()}
                 <Row>
                     <Col sm={1}>
                     </Col>
                     <Col>
                         <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile</h1>
-                        <h2 className="float-right" style={{paddingLeft: "30px"}}>Average Rating: {this.state.rating}</h2>
+                        <h2 className="float-right" style={{paddingLeft: "30px"}}>Seller Rating:{ this.state.rating != 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}</h2>
                     </Col>
                     <Col sm={1}>
                     </Col>
-                </Row><br></br>
+                </Row>
                 <Row>
                     <Col sm={1}>
                     </Col>
