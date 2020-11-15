@@ -1,0 +1,106 @@
+3aabcea2 was momaji, 10 minutes ago, message: adding work.txt another file needed for submission
+9f7bd76b was momaji, 22 minutes ago, message: added url.txt to root directory for submission
+3af6d77b was momaji, 44 minutes ago, message: text books for sale switch on profile switch
+fea1d6aa was MohammadH98, 66 minutes ago, message: changed stars
+b2f91c76 was MohammadH98, 80 minutes ago, message: profile changes are now saved, removed unneeded states
+48a9817f was momaji, 2 hours ago, message: change profile pic working
+eb3b7b12 was MohammadH98, 2 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+ee57af16 was MohammadH98, 2 hours ago, message: saving profile edits
+4213c6af was momaji, 2 hours ago, message: flexible added everywhere
+ba49bf5f was momaji, 2 hours ago, message: Added delete button for listings
+7fdb3037 was MohammadH98, 3 hours ago, message: consistent tb pic sizing
+2428182b was MohammadH98, 4 hours ago, message: Update profile.js
+3ec62d5d was MohammadH98, 4 hours ago, message: more formatting changes
+3ae9169f was MohammadH98, 4 hours ago, message: edited display books formatting
+23bf1f0f was MohammadH98, 4 hours ago, message: added conditional rendering so edit listing button only shows up on your profile
+de02b2e9 was momaji, 5 hours ago, message: added required fields for sell and edit textbook form inputs
+bc37c043 was momaji, 5 hours ago, message: add success modals to edit and create listing
+e6b59b83 was momaji, 6 hours ago, message: description field added to all textbooks and shown on listing page
+2217aa70 was momaji, 15 hours ago, message: edit textbook listing working fully, only issue is it shows up on every profile not just current user's
+81fbdf08 was MohammadH98, 16 hours ago, message: removed books array in data > people
+998bc9fa was momaji, 16 hours ago, message: all books added through the sell modal go to personId 0
+5de01b0c was momaji, 17 hours ago, message: forgot to save merge conflict files
+64a40f2c was momaji, 17 hours ago, message: added users textbook listing to profile and edit modal connection (not finished)
+d0dd458c was MohammadH98, 17 hours ago, message: changed default seller id to 0 for new tbs added
+c4b39b3a was MohammadH98, 17 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+4555f899 was MohammadH98, 17 hours ago, message: Update profile.js
+080cf157 was momaji, 18 hours ago, message: sell textbook complete, changed img src on homepage and listing page
+5f9c9e49 was MohammadH98, 18 hours ago, message: changed pencil button
+c1edb3f0 was MohammadH98, 18 hours ago, message: Update profile.js
+def6cc4f was MohammadH98, 18 hours ago, message: change pencil
+b2f79fab was MohammadH98, 18 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+a581d55c was MohammadH98, 18 hours ago, message: added editable user profile
+e7c2b15c was momaji, 19 hours ago, message: sell textbook complete except for image rendering, and got rid of warnings in profile
+dff167de was MohammadH98, 19 hours ago, message: added option to close homepage alert
+2e30d366 was MohammadH98, 19 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+568af75d was MohammadH98, 19 hours ago, message: added user profile
+bd980dca was momaji, 20 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+887798e6 was momaji, 20 hours ago, message: pushing to be in sync with mo, sellTexbook half way done.
+3abf65df was MohammadH98, 20 hours ago, message: finished other users profile
+016cadac was MohammadH98, 23 hours ago, message: updated profile formatting
+8072ec04 was MohammadH98, 23 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+cf889c8c was MohammadH98, 23 hours ago, message: added profile tb for sale and favourited tbs
+afc52b4d was Eoin, 24 hours ago, message: Update homepage.js
+5ded89b5 was Eoin, 24 hours ago, message: Update listing.js
+962aa60c was Eoin, 24 hours ago, message: Update homepage.js
+f3d6d1df was Eoin, 24 hours ago, message: Update listing.js
+19211286 was Eoin, 25 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+6e36bc19 was Eoin, 25 hours ago, message: Update listing.js
+4fb97f41 was MohammadH98, 25 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+af403b0e was MohammadH98, 25 hours ago, message: updated how data gets read into profile.js
+c8c58502 was Eoin, 25 hours ago, message: renamed to match conventions
+7df98fe5 was Eoin, 25 hours ago, message: Update homepage.js
+9223648e was Eoin, 25 hours ago, message: Update listing.js
+5c05be54 was Eoin, 25 hours ago, message: fixed id getters
+7a5f6792 was Eoin, 25 hours ago, message: dynamic routing more
+b3f85337 was Eoin, 25 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+f5f8f361 was Eoin, 25 hours ago, message: dynamic rendering for view all
+f080972f was momaji, 25 hours ago, message: updated app data to retrieve from data.js
+2d7eaf44 was Eoin, 25 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+f876f230 was Eoin, 25 hours ago, message: dynamic rendering
+7c835b85 was MohammadH98, 25 hours ago, message: Merge pull request #3 from momaji/mo-profiles
+23643e15 was MohammadH98, 25 hours ago, message: more data and profile changes
+cc7d0320 was MohammadH98, 26 hours ago, message: Merge pull request #2 from momaji/mo-profiles
+98ef1e7f was MohammadH98, 26 hours ago, message: updated data and how it is read from the profile component
+9297b2ba was Eoin, 26 hours ago, message: messed up some data
+9b46bbad was Eoin, 26 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+96af7cf0 was Eoin, 26 hours ago, message: search functionality coming together
+16a6101d was MohammadH98, 27 hours ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+597832d2 was MohammadH98, 27 hours ago, message: added headers
+57b702c9 was Eoin Lynagh, 27 hours ago, message: Merge pull request #1 from momaji/Eoin-Listings
+c732d6a3 was Eoin, 27 hours ago, message: updated links in nav, added seller link in listing
+82070adb was Eoin, 27 hours ago, message: starting to work
+72738432 was Eoin, 28 hours ago, message: Update homepage.js
+82c87e24 was Eoin, 28 hours ago, message: not working with react router
+26ec0a87 was MohammadH98, 2 days ago, message: added basic profile info
+c2bbe329 was MohammadH98, 2 days ago, message: added profile data and images
+08d78b13 was pmheys, 2 days ago, message: Searching from pages not the Homepage no longer throws an error
+9b33090e was MohammadH98, 2 days ago, message: added back refs
+853b613d was MohammadH98, 2 days ago, message: hitting search will bring you back to the home page
+fa613cb0 was MohammadH98, 2 days ago, message: changed styling of Hello, Paul
+513e9148 was MohammadH98, 2 days ago, message: added base react router functionality
+ef7e5309 was MohammadH98, 2 days ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+786b68ac was MohammadH98, 2 days ago, message: Revert "Revert "Revert "added base react router functionality and an empty profile page"""
+fff9e474 was MohammadH98, 2 days ago, message: Revert "Revert "added base react router functionality and an empty profile page""
+a31297bd was MohammadH98, 2 days ago, message: Revert "added base react router functionality and an empty profile page"
+61786a25 was momaji, 2 days ago, message: forgot to add sell textbook modal
+95a3c92d was momaji, 2 days ago, message: fixed merge conflicrts
+56f75d37 was MohammadH98, 2 days ago, message: added base react router functionality and an empty profile page
+1b7e9297 was pmheys, 2 days ago, message: Update book icon mapping to use index instead of name so we can have duplicates
+1990a61c was pmheys, 2 days ago, message: Moved Homepage to under navbar, added searching functionality from nav bar
+330c4bd2 was momaji, 3 days ago, message: Added the navbar
+3ad1402b was momaji, 3 days ago, message: added .DS_Store to git ignore
+c5438d69 was pmheys, 7 days ago, message: Complete homepage functionality, add additional books to data
+8742fcad was pmheys, 7 days ago, message: Move images to different location in project, complete homepage sorting and filtering
+fddbc04c was pmheys, 9 days ago, message: Add react-bootstrap, added early homepage functionality
+2310b012 was pmheys, 9 days ago, message: Homepage updates, gitignore
+df2f6830 was pmheys, 9 days ago, message: update data.js with textbook info
+81ce64e5 was pmheys, 9 days ago, message: Update data.js
+17a73d80 was pmheys, 9 days ago, message: Adding data, data files, and location for homepage source code
+dbe05633 was momaji, 11 days ago, message: Deleting node modules and adding new example page
+726bebeb was momaji, 11 days ago, message: changed file order
+021cfbbb was momaji, 11 days ago, message: adding engines
+8c79521e was momaji, 11 days ago, message: Merge branch 'main' of https://github.com/momaji/texchange into main
+1e6bd7d7 was momaji, 11 days ago, message: Initial commit to repo
+5d23a180 was momaji, 11 days ago, message: Update README.md
+de9c83ee was momaji, 11 days ago, message: Initial commit
