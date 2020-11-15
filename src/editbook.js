@@ -3,7 +3,7 @@ import { Modal, Button, Form, Row, Col, Image} from 'react-bootstrap';
 let priceOpts=[...Array(501).keys()];
 
 //if react in strict mode then anamation={false} must be set for the modal
-function SellModal(props) {
+function EditModal(props) {
   return (
     <Modal
       show={props.show}
@@ -14,7 +14,7 @@ function SellModal(props) {
     >
       <Modal.Header style={{backgroundColor: "#78c2ad"}} closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className='sell-header'>
-          Create New TextBook Listing
+          Edit TextBook Listing
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -64,10 +64,10 @@ function SellModal(props) {
       </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="btn btn-secondary mr-auto" onClick={props.onHide}>Close</Button>
+        <Button className="btn btn-secondary mr-auto" onClick={props.onHide}>Cancel</Button>
 
-        <Button className="btn btn-primary" variant="primary" onClick={props.createListing}>
-          Submit
+        <Button className="btn btn-primary" variant="primary" onClick={props.editListing}>
+          Save
         </Button>
 
       </Modal.Footer>
@@ -77,4 +77,4 @@ function SellModal(props) {
 
 
 
-export default SellModal;
+export default EditModal;

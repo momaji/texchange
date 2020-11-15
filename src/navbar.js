@@ -21,7 +21,7 @@ class TexNavbar extends React.Component{
     this.state={ searchKey: "", nullRefAlert: false };
     this.handleProfileClick = this.handleProfileClick.bind(this);
   }
-  
+
   handleSearchChange(event){
     //console.log(event.target.value);
     this.setState( { searchKey: event.target.value } );
@@ -84,7 +84,7 @@ class TexNavbar extends React.Component{
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
-          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} />} />
+          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} openEditModal={this.props.openEditModal}/>} />
           <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData} />}></Route>
         </div>
       </Router>

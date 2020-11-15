@@ -51,11 +51,16 @@ class Profile extends React.Component{
         var bookList = [];
         var favouritedList = [];
         var numStars;
+        console.log(this.state.profileID)
 
-        for (var i = 0; i < profileData["books"].length; i++)
-        {
-            bookList.push(this.findInData("textbooks", profileData["books"][i]));
-        }
+        bookList = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID )
+
+        // for (var i = 0; i < profileData["books"].length; i++)
+        // {
+        //     bookList.push(this.findInData("textbooks", profileData["books"][i]));
+        // }
+
+        console.log('booklist: '+bookList)
 
         for (var j = 0; j < profileData["favourited"].length; j++)
         {
@@ -128,15 +133,20 @@ class Profile extends React.Component{
     {
         this.setState
         ({
-            editable: !this.state.editable, 
+            editable: !this.state.editable,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             gender: this.state.gender,
             email: this.state.email,
             number: this.state.number,
+<<<<<<< Updated upstream
             location: this.state.location,
             image: this.state.image
         }); 
+=======
+            location: this.state.location
+        });
+>>>>>>> Stashed changes
     }
 
     render()
@@ -169,11 +179,18 @@ class Profile extends React.Component{
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
+<<<<<<< Updated upstream
                                 {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
                                 <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
                                 : this.state.firstName + " " + this.state.lastName}</Form>
                             </h4><br></br><br></br><br></br>
                             
+=======
+                            {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
+                            <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
+                            : this.state.firstName + " " + this.state.lastName}</Form></h4><br></br><br></br><br></br>
+
+>>>>>>> Stashed changes
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Gender:&nbsp;</Form.Label>
                                 {this.state.editable ? <Form.Control defaultValue={this.state.gender} as="select" value={this.state.gender} onChange={(event) => this.setState({gender: event.target.value})}>
                                 <option>Male</option><option>Female</option><option>Other</option></Form.Control> : this.state.gender}</Form>
@@ -214,7 +231,7 @@ class Profile extends React.Component{
                         <Row>
                             {this.state.books.map((book, index) =>
                                     <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}><br></br>
-                                        <Image src={window.location.origin + book.src} height={180} />
+                                        <Image src={book.src} height={180} onClick={() => this.props.openEditModal(book.id) } />
                                         <p></p>
                                         <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
                                         <span>{book.name}</span><br></br>
