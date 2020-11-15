@@ -197,8 +197,8 @@ class HomePage extends React.Component {
                             <span>Average Seller Review:</span><p>{book.rating}</p>
                             <Image src={book.src} height={180} width={140} />
                             <p></p>
-                            <Link exact to={this.getBookUrl(book)}>View Listing</Link>
-                            <p>{book.name}</p>
+                            <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
+                            <span className="font-weight-bold">{book.name}</span>
                             <p>{book.author}</p>
                             <p>${book.price}</p>
                         </Col>

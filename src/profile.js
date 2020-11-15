@@ -211,8 +211,8 @@ class Profile extends React.Component{
                                         <Image src={book.src} height={180} width={140} />
                                         <p></p>
                                         <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
-                                        <span>{book.name}</span><br></br>
-                                        <span>{book.author}</span>
+                                        <span className="font-weight-bold">{book.name}</span>
+                                        <p>{book.author}</p>
                                         <p>${book.price}</p>
                                         {this.state.profileID === "0" && <Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button>}
                                     </Col>
@@ -241,8 +241,8 @@ class Profile extends React.Component{
                                     <Image src={window.location.origin + book.src} height={180} width={140} />
                                     <p></p>
                                     <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
-                                    <span>{book.name}</span><br></br>
-                                    <span>{book.author}</span>
+                                    <span className="font-weight-bold">{book.name}</span>
+                                    <p>{book.author}</p>
                                     <p>${book.price}</p>
                                 </Col>
                             )}
