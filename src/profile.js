@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, Row, Col, Image, Alert } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import { GoPencil } from 'react-icons/go';
 
 const thirdExample = {
     size: 40,
@@ -24,6 +25,7 @@ class Profile extends React.Component{
             profileID: this.props.match.params.id,
             firstName: "",
             lastName: "",
+            gender: "",
             email: "",
             number: "",
             location: "",
@@ -79,7 +81,7 @@ class Profile extends React.Component{
                 numStars = 1;
                 break; 
             default:
-                numStars = 0;
+                numStars = 4;
         }
 
         this.setState
@@ -87,6 +89,7 @@ class Profile extends React.Component{
             profileID: this.props.match.params.id,
             firstName: profileData["firstName"],
             lastName: profileData["lastName"],
+            gender: profileData["gender"],
             email: profileData["email"],
             number: profileData["phone"],
             location: profileData["location"],
@@ -120,6 +123,11 @@ class Profile extends React.Component{
     {
         this.setState({ratingSubmitted: false});
     }
+
+    editFields()
+    {
+        console.log("hi");
+    }
     
     render()
     {
@@ -131,8 +139,11 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile</h1>
-                        <h2 className="float-right" style={{paddingLeft: "30px"}}>Seller Rating:{ this.state.rating != 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}</h2>
+                        <h1 className="float-left">{this.state.firstName} {this.state.lastName}'s Profile 
+                        {this.state.profileID == 0 && <span onClick={this.editFields} style={{paddingLeft: "25px"}}><GoPencil></GoPencil></span>}</h1>
+                        <h2 className="float-right">Seller Rating:
+                        {this.state.rating != 0 && this.state.profileID != 0 && <ReactStars {...thirdExample} value={this.state.rating} onChange={this.changeRating} />}
+                        {this.state.rating != 0 && this.state.profileID == 0 && <ReactStars {...thirdExample} value={this.state.rating} edit={false} />}</h2>
                     </Col>
                     <Col sm={1}>
                     </Col>
@@ -143,8 +154,8 @@ class Profile extends React.Component{
                     <Col>
                         <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>
                         <div style={{paddingTop: "17px"}}>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">First Name: </span>{this.state.firstName}</h4><br></br><br></br><br></br>
-                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Last Name: </span>{this.state.lastName}</h4><br></br><br></br><br></br>
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Full Name: </span>{this.state.firstName} {this.state.lastName}</h4><br></br><br></br><br></br>
+                            <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Gender: </span>{this.state.gender}</h4><br></br><br></br><br></br>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Email Name: </span>{this.state.email}</h4><br></br><br></br><br></br>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Phone Number: </span>{this.state.number}</h4><br></br><br></br><br></br>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><span className="font-weight-bold">Location: </span>{this.state.location}</h4><br></br><br></br><br></br>
