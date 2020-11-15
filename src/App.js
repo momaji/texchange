@@ -44,6 +44,7 @@ class App extends React.Component{
   };
 
     this.createListing = this.createListing.bind(this)
+    this.deleteListing = this.deleteListing.bind(this)
     this.showSellModal = this.showSellModal.bind(this)
     this.closeSellModal = this.closeSellModal.bind(this)
     this.editListing = this.editListing.bind(this)
@@ -175,10 +176,38 @@ class App extends React.Component{
       sellModalVisible: false,
       successAlertVisible: true
     })
-    
+
     setTimeout( () => this.setState({successAlertVisible: false}), 2000);
 
     // this.closeSellModal()
+  }
+
+  deleteListing(){
+    let newData = this.state.appData;
+    let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
+    newData.textbooks = newTextBookArr
+    // for (var book in newData.textbooks){
+    //   if (newData.textbooks[book].id == this.state.editModalTextBookId){
+    //       newData.textbooks[book] = info
+    //       break;
+    //   }
+    // }
+    console.log(newData)
+    this.setState({
+      appData: newData,
+      editModalTextBookName: '',
+      editModalTextBookAuthor: '',
+      editModalTextBookPrice: '',
+      editModalTextBookFlexible: false,
+      editModalTextBookDatePublished: '',
+      editModalTextBookDescription: '',
+      editModalTextBookCourses: '',
+      editModalTextBookFile: '',
+      editModalTextBookId: '',
+      editModalVisible: false,
+      successAlertVisible: true
+    })
+    setTimeout( () => this.setState({successAlertVisible: false}), 2000);
   }
 
   editListing() {
@@ -244,6 +273,7 @@ class App extends React.Component{
         />
         <EditModal show={this.state.editModalVisible} onHide={this.closeEditModal}
         editListing={this.editListing}
+        deleteListing={this.deleteListing}
         name={this.state.editModalTextBookName}
         author={this.state.editModalTextBookAuthor}
         price={this.state.editModalTextBookPrice}
