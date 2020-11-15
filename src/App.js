@@ -12,12 +12,23 @@ class App extends React.Component{
   constructor(props){
     super(props);
 
+    // sample textbook appData
+    // { "name": "Organic Chemistry 2", "author": "Francis A. Carey", "published": "2017-08-20", "price": 115, "course": "CHEM 2CO3", "src": "/image/chemistry_4.jpg", "rating": "☆☆☆", "location": "Toronto", "id": 7, "personId": 2 },
+
     this.state={
       appData: data,
-      sellModalVisible: false
+      sellModalVisible: false,
+      sellTextBookName: '',
+      sellTextBookAuthor: '',
+      sellTextBookPrice: '',
+      sellTextBookFlexible: false,
+      sellTextBookDatePublished: '',
+      sellTextBookDescription: '',
+      sellTextBookCourses: '',
+      sellTextBookFile: ''
   };
 
-    this.handler = this.handler.bind(this)
+    this.createListing = this.createListing.bind(this)
     this.showSellModal = this.showSellModal.bind(this)
     this.closeSellModal= this.closeSellModal.bind(this)
   }
@@ -41,20 +52,80 @@ class App extends React.Component{
     })
   }
 
-  handler(info) {
+  nameStateChange(event) {
+    this.setState({sellTextBookName: event.target.value});
+  }
+
+  authorStateChange(event) {
+    this.setState({sellTextBookAuthor: event.target.value});
+  }
+
+  priceStateChange(event) {
+    this.setState({sellTextBookPrice: event.target.value});
+  }
+
+  flexibleStateChange(event) {
+    this.setState({sellTextBookFlexible: event.target.checked});
+  }
+
+  datePublishedStateChange(event) {
+    this.setState({sellTextBookDatePublished: event.target.value});
+  }
+
+  descriptionStateChange(event) {
+    this.setState({sellTextBookDescription: event.target.value});
+  }
+
+  coursesStateChange(event) {
+    this.setState({sellTextBookCourses: event.target.value});
+  }
+
+  fileStateChange(event) {
+    this.setState({sellTextBookFile: event.target.value});
+  }
+
+  createListing() {
+    // console.log('name: '+this.state.sellTextBookName)
+    // console.log('author: '+this.state.sellTexBookAuthor)
+    // console.log('price: '+this.state.sellTextBookPrice)
+    // console.log('flexible: '+this.state.sellTextBookFlexible)
+    // console.log('date published: '+this.state.sellTextBookDatePublished)
+    // console.log('description: '+this.state.sellTextBookDescription)
+    // console.log('course: ' + this.state.sellTextBookCourses)
+    // console.log('file: ' +this.state.sellTextBookFile)
+    let id = this.state.appData.length
+    let info = { "name": "New Textbook", "author": "Moziah San Vicente", "published": "2020-11-14", "price": 20, "course": "ENG 5501", "src": "/image/chemistry_4.jpg", "rating": "☆☆☆", "location": "Toronto", "id": 50, "personId": 2 }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
       appData: newData
     })
+    this.closeSellModal()
   }
 
   render(){
     return (
       <div className="App">
-        <TexNavbar appData={this.state.appData} openModal={this.showSellModal} createListing={this.handler}/>
-        <SellModal show={this.state.sellModalVisible}
-        onHide={this.closeSellModal}/>
+        <TexNavbar appData={this.state.appData} openModal={this.showSellModal} />
+        <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}
+        createListing={this.createListing}
+        name={this.state.sellTextBookName}
+        author={this.state.sellTextBookAuthor}
+        price={this.state.sellTextBookPrice}
+        flexible={this.state.sellTextBookFlexible}
+        datePublished={this.state.sellTextBookDatePublished}
+        description={this.state.sellTextBookDescription}
+        courses={this.state.sellTextBookCourses}
+        file={this.state.sellTextBookFile}
+        nameInputHandler={this.nameStateChange.bind(this)}
+        authorInputHandler={this.authorStateChange.bind(this)}
+        priceInputHandler={this.priceStateChange.bind(this)}
+        flexibleInputHandler={this.flexibleStateChange.bind(this)}
+        datePublishedInputHandler={this.datePublishedStateChange.bind(this)}
+        descriptionInputHandler={this.descriptionStateChange.bind(this)}
+        coursesInputHandler={this.coursesStateChange.bind(this)}
+        fileInputHandler={this.fileStateChange.bind(this)}
+        />
       </div>
     );
   }

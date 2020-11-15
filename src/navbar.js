@@ -21,13 +21,7 @@ class TexNavbar extends React.Component{
     this.state={ searchKey: "", nullRefAlert: false };
 
   }
-
-  createListing(){
-    let info= { "name": "textbook", "author": "moziah", "published": "2002-03-21", "price": 10, "course": "BIO 1B03", "src": "/image/bio_2.jpg", "rating": "☆☆☆", "location": "Brampton" }
-    this.props.createListing(info)
-
-  }
-
+  
   handleSearchChange(event){
     //console.log(event.target.value);
     this.setState( { searchKey: event.target.value } );
