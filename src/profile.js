@@ -196,7 +196,7 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h1 className="float-left">{this.state.firstName}'s Textbooks For Sale</h1>
+                        <h1 className="float-left">{this.state.profileID === "0" ? "Your" : this.state.firstName + "'s"} Textbooks For Sale</h1>
                     </Col>
                     <Col sm={1}>
                     </Col>
@@ -214,7 +214,7 @@ class Profile extends React.Component{
                                         <span className="font-weight-bold">{book.name}</span>
                                         <p>{book.author}</p>
                                         <p>${book.price}</p>
-                                        {this.state.profileID === "0" && <Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button>}
+                                        {this.state.profileID === "0" && <p><Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button></p>}
                                     </Col>
                                 )}
                         </Row>
@@ -226,7 +226,7 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h1 className="float-left">{this.state.firstName}'s Favourited Textbooks</h1>
+                        <h1 className="float-left">{this.state.profileID === "0" ? "Your" : this.state.firstName + "'s"} Favourited Textbooks</h1>
                     </Col>
                     <Col sm={1}>
                     </Col>
