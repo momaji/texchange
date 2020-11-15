@@ -41,7 +41,7 @@ class Profile extends React.Component{
     findInData(name, id)
     {
         var source = this.props.appData[name];
-        return source.filter(element => (element['id'] === id))[0];
+        return source.filter(element => (element['id'] == id))[0];
     }
 
     componentDidMount()
