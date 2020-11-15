@@ -164,7 +164,7 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={(event) => this.setState({image: event.target.value})}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
+                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={(event) => this.setState({image: URL.createObjectURL(event.target.files[0])})}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
                         {console.log(this.state.image)}
 
                         <div style={{paddingTop: "17px"}}>

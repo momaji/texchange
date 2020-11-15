@@ -93,7 +93,7 @@ class App extends React.Component{
     // console.log('description: '+this.state.sellTextBookDescription)
     // console.log('course: ' + this.state.sellTextBookCourses)
     // console.log('file: ' +this.state.sellTextBookFile)
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 2 }
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 0 }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({

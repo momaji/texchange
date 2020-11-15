@@ -20,9 +20,9 @@ var data = {
         {"id": 0, "firstName": "Kevin", "lastName": "Browne", "gender": "Male", "email": "brownek@mcmaster.ca", "phone":"905-525-9140", "location": "Hamilton, ON", "avatar":"/image/browne.jpg", "books": [], "favourited": [], "rating": ""},
         {"id": 1, "firstName": "King", "lastName": "Bach", "gender": "Male", "email": "bachk.5p00n@hotmail.com", "phone":"416-821-5211", "location": "Toronto, ON", "avatar":"/image/bach.jpg","books": [0, 5, 10], "favourited": [3, 8], "rating": "★★★★★"},
         {"id": 2, "firstName": "Anthony", "lastName": "Fantano", "gender": "Other", "email": "anthonyf@gmail.com", "phone":"647-929-3264", "location": "Hamilton, ON", "avatar":"/image/fantano.jpg", "books": [1, 6, 11], "favourited": [2, 8, 7], "rating": "★★★★☆"},
-        {"id": 3, "firstName": "Ray-William", "lastName": "Johnson", "Male": "Male", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg", "books": [2, 7, 12], "favourited": [0, 1, 11, 12], "rating": "★★★☆☆"},
+        {"id": 3, "firstName": "Ray-William", "lastName": "Johnson", "gender": "Male", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg", "books": [2, 7, 12], "favourited": [0, 1, 11, 4], "rating": "★★★☆☆"},
         {"id": 4, "firstName": "Janet", "lastName": "Kim", "gender": "Female", "email": "janetkim@gmail.com", "phone":"647-123-4567", "location": "Toronto, ON", "avatar":"/image/janet.jpg", "books": [3, 8], "favourited": [4, 6, 7, 9, 10], "rating": "★★☆☆☆"},
-        {"id": 5, "firstName": "Drew", "lastName": "Gooden", "gender": "Male", "email": "drewisgooden@outlook.com", "phone":"416-666-4205", "location": "Brampton, ON", "avatar":"/image/gooden.jpg", "books": [4, 9], "favourited": [0, 1, 2, 3, 5, 6, 8, 9, 10], "rating": "★☆☆☆☆"}
+        {"id": 5, "firstName": "Drew", "lastName": "Gooden", "gender": "Male", "email": "drewisgooden@outlook.com", "phone":"416-666-4205", "location": "Brampton, ON", "avatar":"/image/gooden.jpg", "books": [4, 9], "favourited": [0, 1, 2, 3, 5, 6], "rating": "★☆☆☆☆"}
     ]
 }
 
