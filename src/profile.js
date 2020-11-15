@@ -113,7 +113,7 @@ class Profile extends React.Component{
     render()
     {
         let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0]
-        let bookList2 = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID )
+        let bookList2 = this.props.appData.textbooks.filter(book => book.personId == this.props.match.params.id )
 
         return (
             <Container fluid="true">
