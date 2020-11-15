@@ -34,7 +34,8 @@ class App extends React.Component{
       editModalTextBookDatePublished: '',
       editModalTextBookDescription: '',
       editModalTextBookCourses: '',
-      editModalTextBookFile: ''
+      editModalTextBookFile: '',
+      editModalTextBookId:''
   };
 
     this.createListing = this.createListing.bind(this)
@@ -65,10 +66,21 @@ class App extends React.Component{
 
   showEditModal(id){
     //gotta populate the state data as well!!!!
-    console.log('edit modal id: '+id)
+    var thing = id
+    let book = this.state.appData.textbooks.filter( book => book.id === thing )[0]
     this.setState({
-      editModalVisible: true
+      editModalVisible: true,
+      editModalTextBookName: book.name,
+      editModalTextBookAuthor: book.author,
+      editModalTextBookPrice: book.price,
+      editModalTextBookFlexible: book.flexible,
+      editModalTextBookDatePublished: book.published,
+      editModalTextBookDescription: '',
+      editModalTextBookCourses: book.course,
+      editModalTextBookFile: book.src,
+      editModalTextBookId: book.id
     })
+
   }
 
   nameStateChange(event) {
@@ -136,7 +148,7 @@ class App extends React.Component{
   }
 
   createListing() {
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0 }
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
@@ -154,9 +166,18 @@ class App extends React.Component{
   }
 
   editListing() {
-    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 2 }
+    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible }
     let newData = this.state.appData;
-    newData.textbooks.push(info)
+    let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
+    newTextBookArr.push(info)
+    newData.textbooks = newTextBookArr
+    // for (var book in newData.textbooks){
+    //   if (newData.textbooks[book].id == this.state.editModalTextBookId){
+    //       newData.textbooks[book] = info
+    //       break;
+    //   }
+    // }
+    console.log(newData)
     this.setState({
       appData: newData,
       editModalTextBookName: '',
@@ -166,9 +187,10 @@ class App extends React.Component{
       editModalTextBookDatePublished: '',
       editModalTextBookDescription: '',
       editModalTextBookCourses: '',
-      editModalTextBookFile: ''
+      editModalTextBookFile: '',
+      editModalTextBookId: ''
     })
-    this.closeeditModalModal()
+    this.closeEditModal()
   }
 
   render(){

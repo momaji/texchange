@@ -133,8 +133,9 @@ class Profile extends React.Component{
         });
     }
 
-    render()
-    {
+    render(){
+    let bookList2 = this.props.appData.textbooks.filter(book => book.personId == this.state.profileID )
+
         return (
             <Container fluid="true">
                 {this.renderAlert()}
@@ -159,7 +160,6 @@ class Profile extends React.Component{
                     </Col>
                     <Col>
                         {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={(event) => this.setState({image: URL.createObjectURL(event.target.files[0])})}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
-                        {console.log(this.state.image)}
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
@@ -206,14 +206,15 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={10}>
                         <Row>
-                            {this.state.books.map((book, index) =>
+                            {bookList2.map((book, index) =>
                                     <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}><br></br>
-                                        <Image src={book.src} height={180} onClick={() => this.props.openEditModal(book.id) } />
+                                        <Image src={book.src} height={180} />
                                         <p></p>
                                         <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
                                         <span>{book.name}</span><br></br>
                                         <span>{book.author}</span>
                                         <p>${book.price}</p>
+                                        <Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button>
                                     </Col>
                                 )}
                         </Row>

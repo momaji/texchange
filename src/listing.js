@@ -78,7 +78,7 @@ class Listing extends React.Component {
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
                         <Row>
                             <Col>
-                                <p>Review Score: {this.state.rating}</p>
+                                <p>Seller Review Score: {this.state.rating}</p>
                             </Col>
                             <Col>
                                 <p>Location: {this.state.location}</p>

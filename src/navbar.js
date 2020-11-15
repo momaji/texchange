@@ -18,7 +18,7 @@ class TexNavbar extends React.Component{
     super(props);
     this.homePageRef = React.createRef();
 
-    this.state={ searchKey: "", nullRefAlert: false };
+    this.state={ searchKey: "", nullRefAlert: false, appData2: this.props.appData };
     this.handleProfileClick = this.handleProfileClick.bind(this);
   }
 
@@ -84,7 +84,7 @@ class TexNavbar extends React.Component{
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
-          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} openEditModal={this.props.openEditModal}/>} />
+          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.state.appData2} openEditModal={this.props.openEditModal}/>} />
           <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData} />}></Route>
         </div>
       </Router>

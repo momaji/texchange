@@ -19,7 +19,7 @@ function EditModal(props) {
       </Modal.Header>
       <Modal.Body>
       <Form>
-        <Form.Group controlId="formBasicName">
+        <Form.Group controlId="formBasicEditName">
           <Form.Label>Textbook Name</Form.Label>
           <Form.Control value={props.name} onChange={props.nameInputHandler} type="text" placeholder="Enter Textbook Name" />
         </Form.Group>
@@ -41,7 +41,7 @@ function EditModal(props) {
           <Col>
             <Form.Group controlId="formBasicFlexibleCheckbox">
               <Form.Label>Flexible?</Form.Label>
-              <Form.Check value={props.flexible} onChange={props.flexibleInputHandler} type="checkbox"/>
+              <Form.Check checked={props.flexible} onChange={props.flexibleInputHandler} type="checkbox"/>
             </Form.Group>
           </Col>
         </Row>
