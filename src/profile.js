@@ -1,8 +1,9 @@
 //The JS code for the Profile React Component
-import React, { useState } from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
-import ItemsCarousel from 'react-items-carousel';
-
+import React from 'react';
+import { Container, Row, Col, Image, Carousel } from 'react-bootstrap';
+import {
+    Link
+} from 'react-router-dom';
 
 class Profile extends React.Component{
 
@@ -23,7 +24,7 @@ class Profile extends React.Component{
         };
     }
 
-    findInData(name, id) 
+    findInData(name, id)
     {
         var source = this.props.appData[name];
         return source.filter(element => (element['id'] == id))[0];
@@ -32,9 +33,23 @@ class Profile extends React.Component{
     componentDidMount()
     {
         var profileData = this.findInData("people", this.props.match.params.id);
+
+        var bookList = [];
+        var favouritedList = [];
+
+        for (var i = 0; i < profileData["books"].length; i++)
+        {
+            bookList.push(this.findInData("textbooks", profileData["books"][i]));
+        }
+
+        for (var j = 0; j < profileData["favourited"].length; j++)
+        {
+            favouritedList.push(this.findInData("textbooks", profileData["favourited"][j]));
+        }
+
         this.setState
-        ({     
-            profileID: this.props.match.params.id,   
+        ({
+            profileID: this.props.match.params.id,
             firstName: profileData["firstName"],
             lastName: profileData["lastName"],
             email: profileData["email"],
@@ -42,13 +57,18 @@ class Profile extends React.Component{
             location: profileData["location"],
             image: profileData["avatar"],
             rating: profileData["rating"],
-            books: profileData["books"],
-            favourited: profileData["favourited"]
-        });
-    }   
+            books: bookList,
+            favourited: favouritedList
+        });  
+    }
+
+    getBookUrl(book) 
+    {
+        return "/books/" + book["id"];
+    }
 
     render()
-    {   
+    {
         return (
             <Container fluid="true">
                 <Row>
@@ -60,7 +80,7 @@ class Profile extends React.Component{
                     </Col>
                     <Col sm={1}>
                     </Col>
-                </Row><br></br> 
+                </Row><br></br>
                 <Row>
                     <Col sm={1}>
                     </Col>
@@ -81,7 +101,32 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        <h2 className="float-left">{this.state.firstName}'s Textbooks For Sale</h2>
+                        <h1 className="float-left">{this.state.firstName}'s Textbooks For Sale</h1>
+                    </Col>
+                    <Col sm={1}>
+                    </Col>
+                </Row><br></br>
+                <Row>
+                    <Col sm={1}>
+                    </Col>    
+                    {this.state.books.map((book, index) =>
+                            <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index}>
+                                <Image src={window.location.origin + book.src} height={180} />
+                                <p></p>
+                                <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
+                                <span>{book.name}</span><br></br>
+                                <span>{book.author}</span>
+                                <p>${book.price}</p>
+                            </Col>
+                        )}  
+                    <Col sm={1}>
+                    </Col>
+                </Row><br></br><br></br>
+                <Row>
+                    <Col sm={1}>
+                    </Col>
+                    <Col>
+                        <h1 className="float-left">{this.state.firstName}'s Favourited Textbooks</h1>
                     </Col>
                     <Col sm={1}>
                     </Col>
@@ -89,8 +134,16 @@ class Profile extends React.Component{
                 <Row>
                     <Col sm={1}>
                     </Col>
-                    <Col>
-                    </Col>
+                    {this.state.favourited.map((book, index) =>
+                        <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} >
+                            <Image src={window.location.origin + book.src} height={180} />
+                            <p></p>
+                            <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
+                            <span>{book.name}</span><br></br>
+                            <span>{book.author}</span>
+                            <p>${book.price}</p>
+                        </Col>
+                    )}
                     <Col sm={1}>
                     </Col>
                 </Row>

@@ -207,8 +207,6 @@ class HomePage extends React.Component {
         );
     }
 
-
-
     render() {
         return (
             <Container fluid="true">
