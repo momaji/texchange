@@ -35,7 +35,6 @@ class Profile extends React.Component{
             favourited: [],
             ratingSubmitted: false
         };
-
         this.closeAlert = this.closeAlert.bind(this);
     }
 

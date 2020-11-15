@@ -19,7 +19,7 @@ class TexNavbar extends React.Component{
     this.homePageRef = React.createRef();
 
     this.state={ searchKey: "", nullRefAlert: false };
-
+    this.handleProfileClick = this.handleProfileClick.bind(this);
   }
   
   handleSearchChange(event){
@@ -44,12 +44,10 @@ class TexNavbar extends React.Component{
   renderAlert(){
     if(this.state.nullRefAlert){
       return(
-        <Alert variant="danger">Looking for a book? Click Search again to begin!</Alert>
+        <Alert variant="danger">Looking for a book? Click Search again to begin!<button type="button" onClick={this.handleProfileClick} class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></Alert>
       );
     }
   }
-
-
 
   findInData(name, id){
     var source = data[name];
@@ -57,7 +55,6 @@ class TexNavbar extends React.Component{
     source.forEach(element => (element['id'] === id ? result = element : null));
     return result;
   }
-
 
   render(){
     return(
@@ -80,7 +77,7 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile/3"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Paul <BsFillPersonFill/></Button></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Kevin <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           {this.renderAlert()}
