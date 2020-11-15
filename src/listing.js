@@ -70,7 +70,7 @@ class Listing extends React.Component {
                 </Jumbotron>
                 <Row className="mb-3">
                     <Col className="mb-3">
-                        <Image src={window.location.origin + this.state.src} />
+                        <Image src={this.state.src} />
                         <h3 className="mt-1">By: {this.state.author}</h3>
                         <p>Course: {this.state.course}, Published Date: {this.state.published}</p>
                     </Col>
