@@ -11,9 +11,6 @@ const thirdExample = {
     isHalf: false,
     color: "#f3969a",
     activeColor: "#78c2ad",
-    onChange: newValue => {
-      console.log(`Example 3: new value is ${newValue}`);
-    }
   };
 
 class Profile extends React.Component{
@@ -115,28 +112,28 @@ class Profile extends React.Component{
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
-                                {this.state.editable ? <div><Form.Control defaultValue={this.props.firstName} type="input" value={this.props.firstName} onChange={this.props.editFirstName}></Form.Control>
-                                <Form.Control defaultValue={this.props.lastName} type="input" value={this.props.lastName} onChange={this.props.editLastName}></Form.Control></div>
+                                {this.state.editable ? <div><Form.Control type="input" value={this.props.firstName} onChange={this.props.editFirstName}></Form.Control>
+                                <Form.Control type="input" value={this.props.lastName} onChange={this.props.editLastName}></Form.Control></div>
                                 : profile.firstName + " " + profile.lastName}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Gender:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.props.gender} as="select" value={this.props.gender} onChange={this.props.editGender}>
+                                {this.state.editable ? <Form.Control as="select" value={this.props.gender} onChange={this.props.editGender}>
                                 <option>Male</option><option>Female</option><option>Other</option></Form.Control> : profile.gender}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Email:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.props.email} type="input" value={this.props.email} onChange={this.props.editEmail}>
+                                {this.state.editable ? <Form.Control type="input" value={this.props.email} onChange={this.props.editEmail}>
                                 </Form.Control> : profile.email}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Phone Number:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.props.phone} type="input" value={this.props.phone} onChange={this.props.editPhone}>
+                                {this.state.editable ? <Form.Control type="input" value={this.props.phone} onChange={this.props.editPhone}>
                                 </Form.Control> : profile.phone}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Location:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.props.location} type="input" value={this.props.location} onChange={this.props.editLocation}>
+                                {this.state.editable ? <Form.Control type="input" value={this.props.location} onChange={this.props.editLocation}>
                                 </Form.Control> : profile.location}</Form>
                             </h4><br></br><br></br><br></br>
                         </div>
