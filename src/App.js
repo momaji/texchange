@@ -85,21 +85,15 @@ class App extends React.Component{
   }
 
   createListing() {
-    console.log('name: '+this.state.sellTextBookName)
-    console.log('author: '+this.state.sellTextBookAuthor)
-    console.log('price: '+this.state.sellTextBookPrice)
-    console.log('flexible: '+this.state.sellTextBookFlexible)
-    console.log('date published: '+this.state.sellTextBookDatePublished)
-    console.log('description: '+this.state.sellTextBookDescription)
-    console.log('course: ' + this.state.sellTextBookCourses)
-    console.log('file: ' +this.state.sellTextBookFile)
-    let id = this.state.appData.textbooks.length
-    console.log('id: '+id)
-    let url = this.state.sellTextBookFile
-    console.log('url: '+url)
-    let url2 = url.split('/')[-1]
-    console.log('url: '+'/'+url2)
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": `/${url2}`, "rating": "☆☆☆", "location": "Toronto", "id": 50, "personId": 2 }
+    // console.log('name: '+this.state.sellTextBookName)
+    // console.log('author: '+this.state.sellTextBookAuthor)
+    // console.log('price: '+this.state.sellTextBookPrice)
+    // console.log('flexible: '+this.state.sellTextBookFlexible)
+    // console.log('date published: '+this.state.sellTextBookDatePublished)
+    // console.log('description: '+this.state.sellTextBookDescription)
+    // console.log('course: ' + this.state.sellTextBookCourses)
+    // console.log('file: ' +this.state.sellTextBookFile)
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.appData.textbooks.length, "personId": 2 }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({

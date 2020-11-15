@@ -195,7 +195,7 @@ class HomePage extends React.Component {
                     (book, index) =>
                         <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} >
                             <p>Average Seller Review:</p><p>{book.rating}</p>
-                            <Image src={window.location.origin + book.src} height={180} />
+                            <Image src={book.src} height={180} />
                             <p></p>
                             <Link exact to={this.getBookUrl(book)}>View Listing</Link>
                             <p>{book.name}</p>

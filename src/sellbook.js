@@ -1,9 +1,9 @@
 import React from 'react';
-import {useState} from 'react';
+// import {useState} from 'react';
 import { Modal, Button, Form, Row, Col, Image} from 'react-bootstrap';
 let priceOpts=[...Array(501).keys()];
-const now = new Date().getUTCFullYear();
-const yearOpts = Array(now - (now - 200)).fill('').map((v, idx) => now - idx);
+// const now = new Date().getUTCFullYear();
+//const yearOpts = Array(now - (now - 200)).fill('').map((v, idx) => now - idx);
 
 // <Form.Control as="select" placeholder="Enter Year" >
 //    {yearOpts.map( ((num) => (
@@ -16,7 +16,7 @@ const yearOpts = Array(now - (now - 200)).fill('').map((v, idx) => now - idx);
 
 //if react in strict mode then anamation={false} must be set for the modal
 function SellModal(props) {
-  const [file, setFile] = useState(0);
+  //const [file, setFile] = useState(0);
 
   return (
     <Modal
