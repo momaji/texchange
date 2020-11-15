@@ -84,7 +84,23 @@ class TexNavbar extends React.Component{
           <br />
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
-          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.state.appData2} openEditModal={this.props.openEditModal}/>} />
+          <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} openEditModal={this.props.openEditModal}
+            editProfile={this.props.editProfile.bind(this)}
+            firstName={this.props.firstName}
+            lastName={this.props.lastName}
+            gender={this.props.gender}
+            email={this.props.email}
+            phone={this.props.phone}
+            location={this.props.location}
+            pic={this.props.pic}
+            editFirstName={this.props.editFirstName.bind(this)}
+            editLastName={this.props.editLastName.bind(this)}
+            editGender={this.props.editGender.bind(this)}
+            editEmail={this.props.editEmail.bind(this)}
+            editPhone={this.props.editPhone.bind(this)}
+            editLocation={this.props.editLocation.bind(this)}
+            editPic={this.props.editPic.bind(this)}
+          />} />
           <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData} />}></Route>
         </div>
       </Router>

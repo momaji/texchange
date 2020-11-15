@@ -122,15 +122,10 @@ class Profile extends React.Component{
     {
         this.setState
         ({
-            editable: !this.state.editable,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            gender: this.state.gender,
-            email: this.state.email,
-            number: this.state.number,
-            location: this.state.location,
-            image: this.state.image
+            editable: !this.state.editable
         });
+        
+        this.props.editProfile();
     }
 
     render(){
@@ -159,32 +154,32 @@ class Profile extends React.Component{
                     <Col sm={1}>
                     </Col>
                     <Col>
-                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={(event) => this.setState({image: URL.createObjectURL(event.target.files[0])})}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
+                        {this.state.editable ? <Form inline><Form.Label>Upload a different picture</Form.Label><Form.Control type="file" onChange={this.props.editPic}></Form.Control></Form>: <Image rounded thumbnail className="float-left" src={this.state.image} alt={this.state.firstName} width="350" height="350"></Image>}
 
                         <div style={{paddingTop: "17px"}}>
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Full Name:&nbsp;</Form.Label>
-                                {this.state.editable ? <div><Form.Control defaultValue={this.state.firstName} type="input" value={this.state.firstName} onChange={(event) => this.setState({firstName: event.target.value})}></Form.Control>
-                                <Form.Control defaultValue={this.state.lastName} type="input" value={this.state.lastName} onChange={(event) => this.setState({lastName: event.target.value})}></Form.Control></div>
+                                {this.state.editable ? <div><Form.Control defaultValue={this.props.firstName} type="input" value={this.props.firstName} onChange={this.props.editFirstName}></Form.Control>
+                                <Form.Control defaultValue={this.props.lastName} type="input" value={this.props.lastName} onChange={this.props.editLastName}></Form.Control></div>
                                 : this.state.firstName + " " + this.state.lastName}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Gender:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.state.gender} as="select" value={this.state.gender} onChange={(event) => this.setState({gender: event.target.value})}>
+                                {this.state.editable ? <Form.Control defaultValue={this.props.gender} as="select" value={this.props.gender} onChange={this.props.editGender}>
                                 <option>Male</option><option>Female</option><option>Other</option></Form.Control> : this.state.gender}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Email:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.state.email} type="input" value={this.state.email} onChange={(event) => this.setState({email: event.target.value})}>
+                                {this.state.editable ? <Form.Control defaultValue={this.props.email} type="input" value={this.props.email} onChange={this.props.editEmail}>
                                 </Form.Control> : this.state.email}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Phone Number:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.state.number} type="input" value={this.state.number} onChange={(event) => this.setState({number: event.target.value})}>
+                                {this.state.editable ? <Form.Control defaultValue={this.props.number} type="input" value={this.props.number} onChange={this.props.editPhone}>
                                 </Form.Control> : this.state.number}</Form>
                             </h4><br></br><br></br><br></br>
 
                             <h4 style={{paddingLeft: "20px"}} className="float-left"><Form inline><Form.Label className="font-weight-bold">Location:&nbsp;</Form.Label>
-                                {this.state.editable ? <Form.Control defaultValue={this.state.location} type="input" value={this.state.location} onChange={(event) => this.setState({location: event.target.value})}>
+                                {this.state.editable ? <Form.Control defaultValue={this.props.location} type="input" value={this.props.location} onChange={this.props.editLocation}>
                                 </Form.Control> : this.state.location}</Form>
                             </h4><br></br><br></br><br></br>
                         </div>

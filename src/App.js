@@ -40,7 +40,14 @@ class App extends React.Component{
       editModalTextBookCourses: '',
       editModalTextBookFile: '',
       editModalTextBookId:'',
-      successAlertVisible:false
+      successAlertVisible:false,
+      profileFirstName: "Kevin",
+      profileLastName: "Browne",
+      profileGender: "Male",
+      profileEmail: "brownek@mcmaster.ca",
+      profilePhone: "905-525-9140",
+      profileLocation: "Hamilton, ON",
+      profilePic: "/image/browne.jpg"
   };
 
     this.createListing = this.createListing.bind(this)
@@ -158,8 +165,57 @@ class App extends React.Component{
     this.setState({editModalTextBookFile: URL.createObjectURL(event.target.files[0])});
   }
 
+  editFirstName(event)
+  {
+    this.setState({profileFirstName: event.target.value});
+  }
+
+  editLastName(event)
+  {
+    this.setState({profileLastName: event.target.value});
+  }
+
+  editGender(event)
+  {
+    this.setState({profileGender: event.target.value});
+  }
+
+  editEmail(event)
+  {
+    this.setState({profileEmail: event.target.value});
+  }
+
+  editPhone(event)
+  {
+    this.setState({profilePhone: event.target.value});
+  }
+
+  editLocation(event)
+  {
+    this.setState({profileLocation: event.target.value});
+  }
+
+  editPic(event)
+  {
+    this.setState({profilePic: URL.createObjectURL(event.target.files[0])});
+  }
+
+  editProfile() 
+  {
+    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": [], "rating": "★★★★☆" }
+    let newData = this.state.appData;
+
+    let newPeople = this.state.appData.people.filter(person => person.id != 0);
+    newPeople.push(info);
+    newData.people = newPeople;
+
+    this.setState({appData: newData});
+
+    //setTimeout( () => this.setState({successAlertVisible: false}), 2000);
+  }
+
   createListing() {
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "★★★★☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
@@ -182,7 +238,7 @@ class App extends React.Component{
   }
 
   editListing() {
-    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆", "location": "Toronto", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
+    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "★★★★☆", "location": "Hamilton, ON", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
     let newData = this.state.appData;
     let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
     newTextBookArr.push(info)
@@ -220,46 +276,65 @@ class App extends React.Component{
     return (
       <div className="App">
         <Modal size="sm" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.successAlertVisible} onHide={this.closeSuccessModal.bind(this)}>
-        <Image src={success} style={{width: "100%", height: "100%", padding: "0px 0px 0px 0px"}} />
+          <Image src={success} style={{width: "100%", height: "100%", padding: "0px 0px 0px 0px"}} />
         </Modal>
-        <TexNavbar appData={this.state.appData} openModal={this.showSellModal} openEditModal={this.showEditModal}/>
-        <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}
-        createListing={this.createListing}
-        name={this.state.sellTextBookName}
-        author={this.state.sellTextBookAuthor}
-        price={this.state.sellTextBookPrice}
-        flexible={this.state.sellTextBookFlexible}
-        datePublished={this.state.sellTextBookDatePublished}
-        description={this.state.sellTextBookDescription}
-        courses={this.state.sellTextBookCourses}
-        file={this.state.sellTextBookFile}
-        nameInputHandler={this.nameStateChange.bind(this)}
-        authorInputHandler={this.authorStateChange.bind(this)}
-        priceInputHandler={this.priceStateChange.bind(this)}
-        flexibleInputHandler={this.flexibleStateChange.bind(this)}
-        datePublishedInputHandler={this.datePublishedStateChange.bind(this)}
-        descriptionInputHandler={this.descriptionStateChange.bind(this)}
-        coursesInputHandler={this.coursesStateChange.bind(this)}
-        fileInputHandler={this.fileStateChange.bind(this)}
+        
+        <TexNavbar appData={this.state.appData} openModal={this.showSellModal} openEditModal={this.showEditModal}
+          editProfile={this.editProfile.bind(this)}
+          firstName={this.state.profileFirstName}
+          lastName={this.state.profileLastName}
+          gender={this.state.profileGender}
+          email={this.state.profileEmail}
+          phone={this.state.profilePhone}
+          location={this.state.profileLocation}
+          pic={this.state.profilePic}
+          editFirstName={this.editFirstName.bind(this)}
+          editLastName={this.editLastName.bind(this)}
+          editGender={this.editGender.bind(this)}
+          editEmail={this.editEmail.bind(this)}
+          editPhone={this.editPhone.bind(this)}
+          editLocation={this.editLocation.bind(this)}
+          editPic={this.editPic.bind(this)}
         />
+
+        <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}
+          createListing={this.createListing}
+          name={this.state.sellTextBookName}
+          author={this.state.sellTextBookAuthor}
+          price={this.state.sellTextBookPrice}
+          flexible={this.state.sellTextBookFlexible}
+          datePublished={this.state.sellTextBookDatePublished}
+          description={this.state.sellTextBookDescription}
+          courses={this.state.sellTextBookCourses}
+          file={this.state.sellTextBookFile}
+          nameInputHandler={this.nameStateChange.bind(this)}
+          authorInputHandler={this.authorStateChange.bind(this)}
+          priceInputHandler={this.priceStateChange.bind(this)}
+          flexibleInputHandler={this.flexibleStateChange.bind(this)}
+          datePublishedInputHandler={this.datePublishedStateChange.bind(this)}
+          descriptionInputHandler={this.descriptionStateChange.bind(this)}
+          coursesInputHandler={this.coursesStateChange.bind(this)}
+          fileInputHandler={this.fileStateChange.bind(this)}
+        />
+
         <EditModal show={this.state.editModalVisible} onHide={this.closeEditModal}
-        editListing={this.editListing}
-        name={this.state.editModalTextBookName}
-        author={this.state.editModalTextBookAuthor}
-        price={this.state.editModalTextBookPrice}
-        flexible={this.state.editModalTextBookFlexible}
-        datePublished={this.state.editModalTextBookDatePublished}
-        description={this.state.editModalTextBookDescription}
-        courses={this.state.editModalTextBookCourses}
-        file={this.state.editModalTextBookFile}
-        nameInputHandler={this.editModalNameStateChange.bind(this)}
-        authorInputHandler={this.editModalAuthorStateChange.bind(this)}
-        priceInputHandler={this.editModalPriceStateChange.bind(this)}
-        flexibleInputHandler={this.editModalFlexibleStateChange.bind(this)}
-        datePublishedInputHandler={this.editModalDatePublishedStateChange.bind(this)}
-        descriptionInputHandler={this.editModalDescriptionStateChange.bind(this)}
-        coursesInputHandler={this.editModalCoursesStateChange.bind(this)}
-        fileInputHandler={this.editModalFileStateChange.bind(this)}
+          editListing={this.editListing}
+          name={this.state.editModalTextBookName}
+          author={this.state.editModalTextBookAuthor}
+          price={this.state.editModalTextBookPrice}
+          flexible={this.state.editModalTextBookFlexible}
+          datePublished={this.state.editModalTextBookDatePublished}
+          description={this.state.editModalTextBookDescription}
+          courses={this.state.editModalTextBookCourses}
+          file={this.state.editModalTextBookFile}
+          nameInputHandler={this.editModalNameStateChange.bind(this)}
+          authorInputHandler={this.editModalAuthorStateChange.bind(this)}
+          priceInputHandler={this.editModalPriceStateChange.bind(this)}
+          flexibleInputHandler={this.editModalFlexibleStateChange.bind(this)}
+          datePublishedInputHandler={this.editModalDatePublishedStateChange.bind(this)}
+          descriptionInputHandler={this.editModalDescriptionStateChange.bind(this)}
+          coursesInputHandler={this.editModalCoursesStateChange.bind(this)}
+          fileInputHandler={this.editModalFileStateChange.bind(this)}
         />
       </div>
     );

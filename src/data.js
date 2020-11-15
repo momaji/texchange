@@ -17,7 +17,7 @@ var data = {
                     { "name": "Essential Mathematics for Engineers", "author": "W. J. R. H Pooler", "published": "2019-11-16", "price": 100, "course": "ENG 2MA3", "src": "/image/math_4.jpg", "rating": "★★★☆☆", "location": "Hamilton", "id": 12, "personId": 3, "flexible": false, "description": "10/10 condition, loved this book, but have to let it go." }
                 ],
     "people": [
-        {"id": 0, "firstName": "Kevin", "lastName": "Browne", "gender": "Male", "email": "brownek@mcmaster.ca", "phone":"905-525-9140", "location": "Hamilton, ON", "avatar":"/image/browne.jpg", "favourited": [], "rating": ""},
+        {"id": 0, "firstName": "Kevin", "lastName": "Browne", "gender": "Male", "email": "brownek@mcmaster.ca", "phone":"905-525-9140", "location": "Hamilton, ON", "avatar":"/image/browne.jpg", "favourited": [], "rating": "★★★★☆"},
         {"id": 1, "firstName": "King", "lastName": "Bach", "gender": "Male", "email": "bachk.5p00n@hotmail.com", "phone":"416-821-5211", "location": "Toronto, ON", "avatar":"/image/bach.jpg", "favourited": [3, 8], "rating": "★★★★★"},
         {"id": 2, "firstName": "Anthony", "lastName": "Fantano", "gender": "Other", "email": "anthonyf@gmail.com", "phone":"647-929-3264", "location": "Hamilton, ON", "avatar":"/image/fantano.jpg", "favourited": [2, 8, 7], "rating": "★★★★☆"},
         {"id": 3, "firstName": "Ray-William", "lastName": "Johnson", "gender": "Male", "email": "yfm2011@yahoo.com", "phone":"905-800-5009", "location": "Hamilton, ON", "avatar":"/image/ray.jpg", "favourited": [0, 1, 11, 4], "rating": "★★★☆☆"},
