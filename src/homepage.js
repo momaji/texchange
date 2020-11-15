@@ -200,7 +200,7 @@ class HomePage extends React.Component {
                             <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
                             <span className="font-weight-bold">{book.name}</span>
                             <p>{book.author}</p>
-                            <p>${book.price}</p>
+                            <p>$ {book.flexible? book.price+' - Flexible' : book.price }</p>
                         </Col>
                 )}
             </Row>

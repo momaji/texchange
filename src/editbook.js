@@ -63,7 +63,7 @@ function EditModal(props) {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="btn btn-secondary mr-auto" onClick={props.onHide}>Cancel</Button>
+        <Button className="btn btn-secondary mr-auto" onClick={props.deleteListing}>Delete</Button>
         <Button className="btn btn-primary" variant="primary" type="submit">
           Save
         </Button>

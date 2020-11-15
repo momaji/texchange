@@ -26,7 +26,8 @@ class Listing extends React.Component {
             rating: "",
             location: "",
             personId: "",
-            description: ""
+            description: "",
+            flexible: ""
         };
     }
 
@@ -49,7 +50,8 @@ class Listing extends React.Component {
                 rating: textbookData["rating"],
                 location: textbookData["location"],
                 personId: textbookData["personId"],
-                description: textbookData["description"]
+                description: textbookData["description"],
+                flexible: textbookData["flexible"]
             });
     }
 
@@ -92,7 +94,7 @@ class Listing extends React.Component {
                         <p>{this.state.description}</p>
                         <Row>
                             <Col>
-                                <h3>Price: ${this.state.price}</h3>
+                                <h3>Price: ${this.state.flexible? this.state.price+' - Flexible' : this.state.price}</h3>
                                 <a href={this.getMailToLink()}>Contact Seller for Purchase</a>
                             </Col>
                         </Row>

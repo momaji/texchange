@@ -208,7 +208,7 @@ class Profile extends React.Component{
                                         <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
                                         <span className="font-weight-bold">{book.name}</span>
                                         <p>{book.author}</p>
-                                        <p>${book.price}</p>
+                                        <p>${book.flexible? book.price+' - Flexible' : book.price}</p>
                                         {this.state.profileID === "0" && <p><Button onClick={() => this.props.openEditModal(book.id) } >Edit</Button></p>}
                                     </Col>
                                 )}
@@ -233,12 +233,12 @@ class Profile extends React.Component{
                         <Row>
                             {this.state.favourited.map((book, index) =>
                                 <Col sm={2} className="mt-2 mb-2 ml-3 mr-3 SearchBookIcon" key={index} ><br></br>
-                                    <Image src={window.location.origin + book.src} height={180} width={140} />
+                                    <Image src={book.src} height={180} width={140} />
                                     <p></p>
                                     <Link exact to={this.getBookUrl(book)}>View Listing</Link><br></br>
                                     <span className="font-weight-bold">{book.name}</span>
                                     <p>{book.author}</p>
-                                    <p>${book.price}</p>
+                                    <p>${book.flexible? book.price + ' - Flexible' : book.price}</p>
                                 </Col>
                             )}
                         </Row>
