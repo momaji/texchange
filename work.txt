@@ -6,6 +6,10 @@ Moziah
  - Added dynamic descriptions to textbook listing page
 
 Paul
+ - Homepage Layout
+ - Creating imported data
+ - Book filtering, sorting on Homepage
+ - Book searching on Homepage
 
 Eoin
 
