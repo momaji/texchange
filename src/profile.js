@@ -62,12 +62,11 @@ class Profile extends React.Component{
     {
         let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0];
         let bookList = this.props.appData.textbooks.filter(book => book.personId == this.props.match.params.id );
-        let person = this.props.appData.people.filter(p=>p.id == this.props.match.params.id)[0]
-        let favouriteList = this.props.appData.textbooks.filter(book => person.favourited.includes(book.id));
+        let favouriteList = this.props.appData.textbooks.filter(book => profile.favourited.includes(book.id));
         console.log(favouriteList)
         let numStars = 0;
 
-        switch(this.props.appData.people[this.props.match.params.id].rating)
+        switch(profile.rating)
         {
             case "★★★★★":
                 numStars = 5;
