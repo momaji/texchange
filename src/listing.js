@@ -68,6 +68,12 @@ class Listing extends React.Component {
         return "mailto:" + person["email"];
     }
 
+    favouriteListing(id)
+    {
+        this.props.addFavourite(id);
+        this.props.editProfile();
+    }
+
     render() {
         return (
             <Container align="center">
@@ -96,6 +102,7 @@ class Listing extends React.Component {
                             <Col>
                                 <h3>Price: ${this.state.flexible? this.state.price+' - Flexible' : this.state.price}</h3>
                                 <a href={this.getMailToLink()}>Contact Seller for Purchase</a>
+                                <Button onClick={this.favouriteListing.bind(this, this.props.match.params.id)}>Favourite Listing</Button>
                             </Col>
                         </Row>
                     </Col>

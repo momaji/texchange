@@ -47,7 +47,8 @@ class App extends React.Component{
       profileEmail: "brownek@mcmaster.ca",
       profilePhone: "905-525-9140",
       profileLocation: "Hamilton, ON",
-      profilePic: "/image/browne.jpg"
+      profilePic: "/image/browne.jpg",
+      userFavourited: []
   };
 
     this.createListing = this.createListing.bind(this)
@@ -99,7 +100,6 @@ class App extends React.Component{
       editModalTextBookFile: book.src,
       editModalTextBookId: book.id
     })
-
   }
 
   nameStateChange(event) {
@@ -201,18 +201,29 @@ class App extends React.Component{
     this.setState({profilePic: URL.createObjectURL(event.target.files[0])});
   }
 
+  addFavourite(id)
+  {
+    let newFavourites = this.state.userFavourited;
+    newFavourites.push(id);
+    this.setState({userFavourited: newFavourites});
+  }
+
+  removeFavourite(id)
+  {
+    let newFavourites = this.state.userFavourited;
+    newFavourites.splice(newFavourites.indexOf(id), 1);
+    this.setState({userFavourited: newFavourites});
+  }
+
   editProfile()
   {
-    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": [], "rating": "★★★★☆" }
+    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": this.state.userFavourited, "rating": "★★★★☆" }
     let newData = this.state.appData;
-
     let newPeople = newData.people.filter(person => person.id != 0);
     newPeople.push(info);
     newData.people = newPeople;
 
     this.setState({appData: newData});
-
-    //setTimeout( () => this.setState({successAlertVisible: false}), 2000);
   }
 
   createListing() {
@@ -248,7 +259,6 @@ class App extends React.Component{
     //       break;
     //   }
     // }
-    console.log(newData)
     this.setState({
       appData: newData,
       editModalTextBookName: '',
@@ -324,6 +334,8 @@ class App extends React.Component{
           editPhone={this.editPhone.bind(this)}
           editLocation={this.editLocation.bind(this)}
           editPic={this.editPic.bind(this)}
+          addFavourite={this.addFavourite.bind(this)}
+          removeFavourite={this.removeFavourite.bind(this)}
         />
 
         <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}

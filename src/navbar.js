@@ -101,7 +101,11 @@ class TexNavbar extends React.Component{
             editLocation={this.props.editLocation.bind(this)}
             editPic={this.props.editPic.bind(this)}
           />} />
-          <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData} />}></Route>
+          <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData}  
+            editProfile={this.props.editProfile.bind(this)}
+            addFavourite={this.props.addFavourite.bind(this)}
+            removeFavourite={this.props.removeFavourite.bind(this)}
+          />} />
         </div>
       </Router>
     )
