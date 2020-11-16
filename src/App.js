@@ -206,25 +206,14 @@ class App extends React.Component{
   {
     let newFavourites = this.state.userFavourited;
     newFavourites.push(id);
-    this.setState({userFavourited: newFavourites, tbFavourited: true});
+    this.setState({userFavourited: newFavourites});
   }
 
   removeFavourite(id)
   {
     let newFavourites = this.state.userFavourited;
     newFavourites.splice(newFavourites.indexOf(id), 1);
-    this.setState({userFavourited: newFavourites, tbFavourited: false});
-  }
-
-  editFavourites()
-  {
-    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": this.state.userFavourited, "rating": "☆☆☆☆" }
-    let newData = this.state.appData;
-    let newPeople = newData.people.filter(person => person.id != 0);
-    newPeople.push(info);
-    newData.people = newPeople;
-
-    this.setState({appData: newData});
+    this.setState({userFavourited: newFavourites});
   }
 
   editProfile()
