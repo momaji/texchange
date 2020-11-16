@@ -14,3 +14,7 @@ Paul
 Eoin
 
 Mohammad
+ -Viewing user profiles: contact details, rating, books for sale, favourited books
+ -Ability to edit your profile: picture, name, gender, email, phone, location
+ -Favouriting and Unfavouriting books from the listing page
+ -Rating other users
