@@ -48,7 +48,8 @@ class App extends React.Component{
       profilePhone: "905-525-9140",
       profileLocation: "Hamilton, ON",
       profilePic: "/image/browne.jpg",
-      userFavourited: []
+      userFavourited: [],
+      tbFavourited: false
   };
 
     this.createListing = this.createListing.bind(this)
@@ -205,19 +206,30 @@ class App extends React.Component{
   {
     let newFavourites = this.state.userFavourited;
     newFavourites.push(id);
-    this.setState({userFavourited: newFavourites});
+    this.setState({userFavourited: newFavourites, tbFavourited: true});
   }
 
   removeFavourite(id)
   {
     let newFavourites = this.state.userFavourited;
     newFavourites.splice(newFavourites.indexOf(id), 1);
-    this.setState({userFavourited: newFavourites});
+    this.setState({userFavourited: newFavourites, tbFavourited: false});
+  }
+
+  editFavourites()
+  {
+    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": this.state.userFavourited, "rating": "☆☆☆☆" }
+    let newData = this.state.appData;
+    let newPeople = newData.people.filter(person => person.id != 0);
+    newPeople.push(info);
+    newData.people = newPeople;
+
+    this.setState({appData: newData});
   }
 
   editProfile()
   {
-    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": this.state.userFavourited, "rating": "★★★★☆" }
+    let info = { "id": 0, "firstName": this.state.profileFirstName, "lastName": this.state.profileLastName, "gender": this.state.profileGender, "email": this.state.profileEmail, "phone": this.state.profilePhone, "location": this.state.profileLocation, "avatar": this.state.profilePic, "favourited": this.state.userFavourited, "rating": "☆☆☆☆" }
     let newData = this.state.appData;
     let newPeople = newData.people.filter(person => person.id != 0);
     newPeople.push(info);
@@ -227,7 +239,7 @@ class App extends React.Component{
   }
 
   createListing() {
-    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "★★★★☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
+    let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆☆", "location": "Hamilton, ON", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
     let newData = this.state.appData;
     newData.textbooks.push(info)
     this.setState({
@@ -277,7 +289,7 @@ class App extends React.Component{
   }
 
   editListing() {
-    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "★★★★☆", "location": "Hamilton, ON", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
+    let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆☆", "location": "Hamilton, ON", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
     let newData = this.state.appData;
     let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
     newTextBookArr.push(info)
