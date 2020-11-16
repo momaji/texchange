@@ -21,12 +21,6 @@ class Profile extends React.Component{
         this.state = {ratingSubmitted: false, editable: false};
     }
 
-    findInData(name, id)
-    {
-        var source = this.props.appData[name];
-        return source.filter(element => (element['id'] == id))[0];
-    }
-
     getBookUrl(book)
     {
         return "/books/" + book["id"];
@@ -99,7 +93,8 @@ class Profile extends React.Component{
                             {!this.state.editable ? <FaPencilAlt></FaPencilAlt> : <FaRegSave></FaRegSave>}</Button>}
                         </h1>
                         <h2 className="float-right">Seller Rating:
-                            {profile.id !== 0 ? <ReactStars {...thirdExample} value={numStars} onChange={this.changeRating.bind(this)}/> : <ReactStars {...thirdExample} value={numStars} edit={false} />}
+                            {profile.id !== 0 && <ReactStars {...thirdExample} value={numStars} onChange={this.changeRating.bind(this)}/>}
+                            {profile.id === 0 && <ReactStars {...thirdExample} value={numStars} edit={false} />}
                         </h2>
                     </Col>
                     <Col sm={1}>
