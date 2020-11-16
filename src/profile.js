@@ -57,28 +57,6 @@ class Profile extends React.Component{
         let profile = this.props.appData.people.filter(person => person.id == this.props.match.params.id )[0];
         let bookList = this.props.appData.textbooks.filter(book => book.personId == this.props.match.params.id );
         let favouriteList = this.props.appData.textbooks.filter(book => profile.favourited.includes(book.id));
-        let numStars = 0;
-
-        switch(profile.rating)
-        {
-            case "★★★★★":
-                numStars = 5;
-                break;
-            case "★★★★☆":
-                numStars = 4;
-                break;
-            case "★★★☆☆":
-                numStars = 3;
-                break;
-            case "★★☆☆☆":
-                numStars = 2;
-                break;
-            case "★☆☆☆☆":
-                numStars = 1;
-                break;
-            default:
-                numStars = 4;
-        }
 
         return (
             <Container fluid="true">
@@ -93,8 +71,8 @@ class Profile extends React.Component{
                             {!this.state.editable ? <FaPencilAlt></FaPencilAlt> : <FaRegSave></FaRegSave>}</Button>}
                         </h1>
                         <h2 className="float-right">Seller Rating:
-                            {profile.id !== 0 && <ReactStars {...thirdExample} value={numStars} onChange={this.changeRating.bind(this)}/>}
-                            {profile.id === 0 && <ReactStars {...thirdExample} value={numStars} edit={false} />}
+                            {profile.id !== 0 && <ReactStars {...thirdExample} value={profile.rating.length} onChange={this.changeRating.bind(this)}/>}
+                            {profile.id === 0 && <ReactStars {...thirdExample} value={profile.rating.length} edit={false} />}
                         </h2>
                     </Col>
                     <Col sm={1}>

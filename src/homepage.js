@@ -239,10 +239,10 @@ class HomePage extends React.Component {
                 <Row>
                     <Col sm={2} className="text-center ScrollingContainer">
                         <h6><u>Average Seller Review</u></h6>
-                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("4+")}>★★★★☆ and up</a> <br />
-                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("3+")}>★★★☆☆ and up</a> <br />
-                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("2+")}>★★☆☆☆ and up</a> <br />
-                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("1+")}>★☆☆☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("4+")}>☆☆☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("3+")}>☆☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("2+")}>☆☆ and up</a> <br />
+                        <a href="#" className="text-muted" onClick={() => this.toggleRatingFilter("1+")}>☆ and up</a> <br />
                         <br />
                         <h6><u>Price</u></h6>
                         <Form>
