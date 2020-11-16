@@ -278,7 +278,9 @@ class App extends React.Component{
     setTimeout( () => this.setState({successAlertVisible: false}), 2000);
   }
 
-  editListing() {
+  editListing(event) {
+    event.preventDefault();
+    event.stopPropagation();
     let info = { "name": this.state.editModalTextBookName, "author": this.state.editModalTextBookAuthor, "published": this.state.editModalTextBookDatePublished, "price": this.state.editModalTextBookPrice, "course": this.state.editModalTextBookCourses, "src": this.state.editModalTextBookFile, "rating": "☆☆☆☆", "location": "Hamilton", "id": this.state.editModalTextBookId, "personId": 0, "flexible": this.state.editModalTextBookFlexible, "description": this.state.editModalTextBookDescription }
     let newData = this.state.appData;
     let newTextBookArr = this.state.appData.textbooks.filter(book => book.id != this.state.editModalTextBookId)
