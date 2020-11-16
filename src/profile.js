@@ -84,6 +84,7 @@ class Profile extends React.Component{
         return (
             <Container fluid="true">
                 {this.renderAlert()}
+                <br></br>
                 <Row>
                     <Col sm={1}>
                     </Col>

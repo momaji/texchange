@@ -210,6 +210,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <Container fluid="true">
+                <br></br>
                 <Row>
                     <Col sm={2}>
                         <h4>Filter By:</h4>

@@ -81,7 +81,7 @@ class TexNavbar extends React.Component{
             </Nav>
           </Navbar>
           {this.renderAlert()}
-          <br />
+          
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
           <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} openEditModal={this.props.openEditModal}
