@@ -77,7 +77,7 @@ class TexNavbar extends React.Component{
             </Form>
             <Button onClick={this.props.openModal}className="ml-auto">Sell a textbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
-              <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Kevin <BsFillPersonFill/></Button></Nav.Link>
+              <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, {(this.props.appData.people.filter(person => person.id == 0)[0]).firstName} <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           {this.renderAlert()}
