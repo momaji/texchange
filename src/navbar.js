@@ -75,13 +75,13 @@ class TexNavbar extends React.Component{
               <FormControl type="text" placeholder="Search for Textbooks" className="mr-sm-2" onChange={this.handleSearchChange.bind(this)} />
               <Button as={NavLink} exact to ="/" href="#home" className="tn btn-secondary my-2 my-sm-0" onClick={this.handleSearchClick.bind(this)}>Search</Button>
             </Form>
-            <Button onClick={this.props.openModal}className="ml-auto">Sell a texbook <IoIosAddCircle/></Button>
+            <Button onClick={this.props.openModal}className="ml-auto">Sell a textbook <IoIosAddCircle/></Button>
             <Nav className="mr-sm-0">
               <Nav.Link as={NavLink} to="/profile/0"><Button onClick={this.handleProfileClick.bind(this)}>Hello, Kevin <BsFillPersonFill/></Button></Nav.Link>
             </Nav>
           </Navbar>
           {this.renderAlert()}
-          
+
           <Route exact path="/" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} />} />
           <Route path="/search/:id" render={(props) => <HomePage ref={this.homePageRef} {...props} appData={this.props.appData} search={true}/>} />
           <Route path="/profile/:id" render={(props) => <Profile {...props} appData={this.props.appData} openEditModal={this.props.openEditModal}
@@ -100,7 +100,7 @@ class TexNavbar extends React.Component{
             editLocation={this.props.editLocation.bind(this)}
             editPic={this.props.editPic.bind(this)}
           />} />
-          <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData}  
+          <Route path="/books/:id" render={(props) => <Listing {...props} appData={this.props.appData}
             editProfile={this.props.editProfile.bind(this)}
             addFavourite={this.props.addFavourite.bind(this)}
             removeFavourite={this.props.removeFavourite.bind(this)}
