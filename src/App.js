@@ -226,7 +226,9 @@ class App extends React.Component{
     this.setState({appData: newData});
   }
 
-  createListing() {
+  createListing(event) {
+    event.preventDefault();
+    event.stopPropagation();
     let info = { "name": this.state.sellTextBookName, "author": this.state.sellTextBookAuthor, "published": this.state.sellTextBookDatePublished, "price": this.state.sellTextBookPrice, "course": this.state.sellTextBookCourses, "src": this.state.sellTextBookFile, "rating": "☆☆☆☆", "location": "Hamilton", "id": this.state.appData.textbooks.length, "personId": 0, "flexible": this.state.sellTextBookFlexible, "description": this.state.sellTextBookDescription }
     let newData = this.state.appData;
     newData.textbooks.push(info)
