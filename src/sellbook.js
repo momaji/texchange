@@ -47,7 +47,7 @@ function SellModal(props) {
         </Row>
         <Form.Group controlId="formBasicDate">
           <Form.Label>Date Published</Form.Label>
-          <Form.Control required value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" placeholder="Enter Author Name" />
+          <Form.Control required value={props.datePublished} onChange={props.datePublishedInputHandler} type="Date" />
         </Form.Group>
         <Form.Group controlId="formBasicDescription">
           <Form.Label>Description</Form.Label>
