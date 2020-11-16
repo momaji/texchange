@@ -74,6 +74,12 @@ class Listing extends React.Component {
         this.props.editProfile();
     }
 
+    unfavouriteListing = id => () =>
+    {
+        this.props.removeFavourite(id);
+        this.props.editProfile();
+    }
+
     render() {
         return (
             <Container align="center">
@@ -102,7 +108,7 @@ class Listing extends React.Component {
                             <Col>
                                 <h3>Price: ${this.state.flexible? this.state.price+' - Flexible' : this.state.price}</h3>
                                 <a href={this.getMailToLink()}>Contact Seller for Purchase</a><br></br><br></br>
-                                <Button onClick={this.favouriteListing(parseInt(this.props.match.params.id))}>Favourite Listing</Button>
+                                {this.props.userFavourited.includes(parseInt(this.props.match.params.id)) ? <Button onClick={this.unfavouriteListing(parseInt(this.props.match.params.id))}>Unfavourite Listing</Button> : <Button onClick={this.favouriteListing(parseInt(this.props.match.params.id))}>Favourite Listing</Button>}
                             </Col>
                         </Row>
                     </Col>

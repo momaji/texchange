@@ -104,6 +104,7 @@ class TexNavbar extends React.Component{
             editProfile={this.props.editProfile.bind(this)}
             addFavourite={this.props.addFavourite.bind(this)}
             removeFavourite={this.props.removeFavourite.bind(this)}
+            userFavourited={this.state.userFavourited}
           />} />
         </div>
       </Router>

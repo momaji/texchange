@@ -48,8 +48,7 @@ class App extends React.Component{
       profilePhone: "905-525-9140",
       profileLocation: "Hamilton, ON",
       profilePic: "/image/browne.jpg",
-      userFavourited: [],
-      tbFavourited: false
+      userFavourited: []
   };
 
     this.createListing = this.createListing.bind(this)
@@ -336,6 +335,7 @@ class App extends React.Component{
           editPic={this.editPic.bind(this)}
           addFavourite={this.addFavourite.bind(this)}
           removeFavourite={this.removeFavourite.bind(this)}
+          userFavourited={this.state.userFavourited}
         />
 
         <SellModal show={this.state.sellModalVisible} onHide={this.closeSellModal}
