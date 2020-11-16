@@ -92,7 +92,6 @@ class TexNavbar extends React.Component{
             email={this.props.email}
             phone={this.props.phone}
             location={this.props.location}
-            pic={this.props.pic}
             editFirstName={this.props.editFirstName.bind(this)}
             editLastName={this.props.editLastName.bind(this)}
             editGender={this.props.editGender.bind(this)}

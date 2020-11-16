@@ -326,7 +326,6 @@ class App extends React.Component{
           email={this.state.profileEmail}
           phone={this.state.profilePhone}
           location={this.state.profileLocation}
-          pic={this.state.profilePic}
           editFirstName={this.editFirstName.bind(this)}
           editLastName={this.editLastName.bind(this)}
           editGender={this.editGender.bind(this)}
