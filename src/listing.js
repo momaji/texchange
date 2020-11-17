@@ -138,11 +138,11 @@ class Listing extends React.Component {
                 <Row>
                     <Col className="bg-primary mb-2">
                         <h5>Share this Listing</h5>
-                        <h3><TwitterShareButton url={window.location.href}><AiFillTwitterCircle /></TwitterShareButton>
+                        <h3><TwitterShareButton url={window.location.href} title={"Hey, check out this textbook I saw using TexChange!"}><AiFillTwitterCircle /></TwitterShareButton>
                         &nbsp;&nbsp;
-                        <FacebookShareButton url={window.location.href}><FaFacebook /></FacebookShareButton>
+                        <FacebookShareButton url={window.location.href} quote={"Hey, check out this textbook I saw using TexChange!"}><FaFacebook /></FacebookShareButton>
                         &nbsp;&nbsp;
-                        <EmailShareButton url={window.location.href}><AiOutlineMail /></EmailShareButton></h3>
+                        <EmailShareButton url={window.location.href} body={"Hey, check out this textbook I saw using TexChange!"} subject={"Hey, I found that textbook you were looking for"}><AiOutlineMail /></EmailShareButton></h3>
                     </Col>
                 </Row>
             </Container>
