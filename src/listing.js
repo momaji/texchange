@@ -136,11 +136,13 @@ class Listing extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="bg-light mb-2">
+                    <Col className="bg-primary mb-2">
                         <h5>Share this Listing</h5>
-                        <h5><TwitterShareButton url={window.location.href}><AiFillTwitterCircle /></TwitterShareButton>||
-                        <FacebookShareButton url={window.location.href}><FaFacebook /></FacebookShareButton>||
-                        <EmailShareButton url={window.location.href}><AiOutlineMail /></EmailShareButton></h5>
+                        <h3><TwitterShareButton url={window.location.href}><AiFillTwitterCircle /></TwitterShareButton>
+                        &nbsp;&nbsp;
+                        <FacebookShareButton url={window.location.href}><FaFacebook /></FacebookShareButton>
+                        &nbsp;&nbsp;
+                        <EmailShareButton url={window.location.href}><AiOutlineMail /></EmailShareButton></h3>
                     </Col>
                 </Row>
             </Container>
