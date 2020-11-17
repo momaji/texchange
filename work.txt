@@ -12,6 +12,11 @@ Paul
  - Book searching on Homepage
 
 Eoin
+- Textbook sell page
+- Homepage specific search filter feature
+- Dynamic routing for the book, profile, search pages
+- Share URLs feature
+- Edited the data structure to allow interfacing between the seller profile and the textbooks, to link them together on the sell pages
 
 Mohammad
  -Viewing user profiles: contact details, rating, books for sale, favourited books
