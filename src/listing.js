@@ -137,8 +137,8 @@ class Listing extends React.Component {
                 </Row>
                 <Row>
                     <Col className="bg-primary pt-1 mb-2">
-                        <h5>Share this Listing</h5>
-                        <h3><TwitterShareButton url={window.location.href} title={"Hey, check out this textbook I saw using TexChange!"}><AiFillTwitterCircle /></TwitterShareButton>
+                        <h5 className="text-light">Share this Listing</h5>
+                        <h3 className="text-light"><TwitterShareButton url={window.location.href} title={"Hey, check out this textbook I saw using TexChange!"}><AiFillTwitterCircle /></TwitterShareButton>
                         &nbsp;&nbsp;
                         <FacebookShareButton url={window.location.href} quote={"Hey, check out this textbook I saw using TexChange!"}><FaFacebook /></FacebookShareButton>
                         &nbsp;&nbsp;
