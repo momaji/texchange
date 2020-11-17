@@ -6,7 +6,29 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import { BsFillPersonFill } from 'react-icons/bs';
+import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
+import { FaFacebook } from 'react-icons/fa';
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    HatenaShareButton,
+    InstapaperShareButton,
+    LineShareButton,
+    LinkedinShareButton,
+    LivejournalShareButton,
+    MailruShareButton,
+    OKShareButton,
+    PinterestShareButton,
+    PocketShareButton,
+    RedditShareButton,
+    TelegramShareButton,
+    TumblrShareButton,
+    TwitterShareButton,
+    ViberShareButton,
+    VKShareButton,
+    WhatsappShareButton,
+    WorkplaceShareButton
+  } from "react-share";
 
 // <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar et eros at sodales. Duis eleifend tincidunt enim vel ornare. Donec vehicula pharetra sollicitudin. Maecenas finibus commodo ornare. Sed commodo consequat facilisis. Vestibulum pulvinar, mi a sodales bibendum, sapien urna pellentesque tortor, quis aliquet metus magna nec nisi. Quisque suscipit libero a urna interdum, ut ullamcorper velit posuere. Maecenas justo ante, bibendum ac eros a, aliquam finibus sapien. Fusce aliquet, lorem id viverra laoreet, magna velit volutpat mi, ut sagittis ex odio quis mi. Proin tincidunt consequat nisi at egestas. Suspendisse feugiat mauris vitae dolor mattis mollis. Suspendisse ultricies lorem quis turpis porttitor gravida.</p>
 
@@ -68,14 +90,12 @@ class Listing extends React.Component {
         return "mailto:" + person["email"];
     }
 
-    favouriteListing = id => () =>
-    {
+    favouriteListing = id => () => {
         this.props.addFavourite(id);
         this.props.editProfile();
     }
 
-    unfavouriteListing = id => () =>
-    {
+    unfavouriteListing = id => () => {
         this.props.removeFavourite(id);
         this.props.editProfile();
     }
@@ -92,6 +112,7 @@ class Listing extends React.Component {
                         <Image src={this.state.src} width={420} height={540} />
                         <h3 className="mt-1">By: {this.state.author}</h3>
                         <p>Course: {this.state.course}, Published Date: {this.state.published}</p>
+
                     </Col>
                     <Col>
                         <h4><Link as={Link} to={this.getProfileLink()}>View Seller Profile</Link></h4>
@@ -106,11 +127,20 @@ class Listing extends React.Component {
                         <p>{this.state.description}</p>
                         <Row>
                             <Col>
-                                <h3>Price: ${this.state.flexible? this.state.price+' - Flexible' : this.state.price}</h3>
+                                <h3>Price: ${this.state.flexible ? this.state.price + ' - Flexible' : this.state.price}</h3>
                                 <a href={this.getMailToLink()}>Contact Seller for Purchase</a><br></br><br></br>
                                 {this.props.userFavourited.includes(parseInt(this.props.match.params.id)) ? <Button className="btn-secondary" onClick={this.unfavouriteListing(parseInt(this.props.match.params.id))}>Unfavourite Listing</Button> : <Button onClick={this.favouriteListing(parseInt(this.props.match.params.id))}>Favourite Listing</Button>}
                             </Col>
                         </Row>
+
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="bg-light mb-2">
+                        <h5>Share this Listing</h5>
+                        <h5><TwitterShareButton url={window.location.href}><AiFillTwitterCircle /></TwitterShareButton>||
+                        <FacebookShareButton url={window.location.href}><FaFacebook /></FacebookShareButton>||
+                        <EmailShareButton url={window.location.href}><AiOutlineMail /></EmailShareButton></h5>
                     </Col>
                 </Row>
             </Container>
